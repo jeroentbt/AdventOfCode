@@ -12,6 +12,13 @@ def test_find_entries_that_add_up_t0_2020_2():
     list = [1722, 979, 366, 298, 675, 1456]
     assert [1722, 298] == find_entries_that_add_up_to_2020(list)
 
+def test_multiply():
+    list = [1, 2]
+    assert 2 == multiply(list)
+
+def test_the_full_shebang():
+    list = [1721, 979, 366, 299, 675, 1456]
+    assert 514579 == the_full_shebang(list)
     
 def get_rest(given_number):
     return 2020 - given_number
@@ -22,4 +29,6 @@ def find_entries_that_add_up_to_2020(list):
         if other_number in list:
             return [number, other_number]
 
+def multiply(list):
+    return list[0] * list[1]
     
