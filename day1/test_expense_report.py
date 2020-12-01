@@ -32,3 +32,14 @@ def find_entries_that_add_up_to_2020(list):
 def multiply(list):
     return list[0] * list[1]
     
+
+def the_full_shebang(list):
+    return multiply(find_entries_that_add_up_to_2020(list))
+
+
+if __name__ == "__main__":
+    print("test")
+    with open("input.txt") as f:
+        lines = f.read().splitlines()
+    list = [int(number) for number in lines]
+    print(the_full_shebang(list))
