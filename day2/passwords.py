@@ -12,3 +12,13 @@ def check_policy(listitem):
         return True
     else:
         return False
+
+
+if __name__ == "__main__":
+    valid_password_count = 0
+    with open("input.txt") as passwordlist:
+        lines = passwordlist.readlines()
+    for line in lines:
+        if check_policy(line):
+            valid_password_count += 1
+    print(valid_password_count)
