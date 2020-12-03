@@ -6,3 +6,16 @@ def thing_at_position(landscape, position):
         return "tree"
     else:
         return "snow"
+
+
+def slide(landscape, slope):
+    horizontal_movement, vertical_movement = slope
+    encountered_landscape = []
+    for step in range(1, len(landscape.splitlines())):
+        print("step")
+        position = (0 + vertical_movement, 0 + horizontal_movement)
+        print(landscape)
+        print(position)
+        print(thing_at_position(landscape, position))
+        encountered_landscape.append(thing_at_position(landscape, position))
+    return encountered_landscape
