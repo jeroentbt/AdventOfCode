@@ -13,7 +13,7 @@ def slide(landscape, slope):
     encountered_landscape = []
     for step in range(1, len(landscape.splitlines())):
         print("step")
-        position = (0 + vertical_movement, 0 + horizontal_movement)
+        position = (0 + (step * vertical_movement), 0 + (step *horizontal_movement))
         print(landscape)
         print(position)
         print(thing_at_position(landscape, position))

@@ -38,3 +38,11 @@ def test_moving_vertically_2():
                  ".###")
     slope = (0, 1)
     assert ["snow"] == slide(landscape, slope)
+
+
+def test_moving_on_a_slope():
+    landscape = ("...#.\n"
+                 "..#..\n"
+                 "#....")
+    slope = (2, 1)
+    assert ["tree", "snow"] == slide(landscape, slope)
