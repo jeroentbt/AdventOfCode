@@ -29,3 +29,16 @@ class Passport:
 
     def split_fields(self, passport_string):
         return passport_string.split()
+
+
+    def is_valid(self):
+        if hasattr(self, "birthyear") and \
+           hasattr(self, "issueyear") and \
+           hasattr(self, "eyecolor") and \
+           hasattr(self, "passportid") and \
+           hasattr(self, "expirationyear") and \
+           hasattr(self, "haircolor") and \
+           hasattr(self, "height"):
+            return True
+        else:
+            return False

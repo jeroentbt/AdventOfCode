@@ -46,3 +46,17 @@ def test_recognise_all_fields():
     assert 2017 == passport.issueyear
     assert 147 == passport.countryid
     assert "183cm" == passport.height
+
+
+def test_passport_is_valid():
+    input = ("ecl:gry pid:860033327 eyr:2020 hcl:#fffffd\n"
+             "byr:1937 iyr:2017 cid:147 hgt:183cm")
+    passport = Passport(input)
+    assert passport.is_valid()
+
+
+def test_passport_is_invalid():
+    input = ("pid:860033327 eyr:2020 hcl:#fffffd\n"
+             "byr:1937 iyr:2017 cid:147 hgt:183cm")
+    passport = Passport(input)
+    assert False == passport.is_valid()
