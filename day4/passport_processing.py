@@ -1,5 +1,11 @@
 def count_valid_passports(batch):
-    return len(batch.split('\n\n'))
+    passports = batch.split('\n\n')
+    valid_passports = 0
+    for p in passports:
+        passport = Passport(p)
+        if passport.is_valid():
+            valid_passports += 1
+    return valid_passports
 
 
 class Passport:
