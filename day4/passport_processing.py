@@ -8,6 +8,19 @@ class Passport:
                 self.birthyear = int(value)
             if key == "iyr":
                 self.issueyear = int(value)
+            if key == "ecl":
+                self.eyecolor = value
+            if key == "pid":
+                self.passportid = int(value)
+            if key == "eyr":
+                self.expirationyear = int(value)
+            if key == "hcl":
+                self.haircolor = value
+            if key == "cid":
+                self.countryid = int(value)
+            if key == "hgt":
+                self.height = value
+
 
 
     def split_kv(self, kv_pair):
