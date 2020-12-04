@@ -24,3 +24,11 @@ def test_recognize_issue_year_and_birth_year_sepparated_with_space():
     passport = Passport(input)
     assert 2000 == passport.issueyear
     assert 1900 == passport.birthyear
+
+
+def test_recognize_issue_year_and_birth_year_sepparated_with_newline():
+    input = ("iyr:2000\n"
+             "byr:1900")
+    passport = Passport(input)
+    assert 2000 == passport.issueyear
+    assert 1900 == passport.birthyear

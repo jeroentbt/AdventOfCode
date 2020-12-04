@@ -15,4 +15,4 @@ class Passport:
 
 
     def split_fields(self, passport_string):
-        return passport_string.split(' ')
+        return passport_string.split()
