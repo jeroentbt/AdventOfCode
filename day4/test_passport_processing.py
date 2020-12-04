@@ -103,3 +103,9 @@ def test_batch_three_of_which_two_valid_passports():
              "ecl:brn pid:760753108 byr:1931\n"
              "hgt:179cm")
     assert 2 == count_valid_passports(input)
+
+
+def test_wrong_value_for_passportid():
+    input = "byr:1971 eyr:2039 hgt:172in pid:170cm hcl:17106b iyr:2012 ecl:gry cid:339"
+    p = Passport(input)
+    assert "invalid" == p.passportid

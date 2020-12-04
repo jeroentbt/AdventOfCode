@@ -21,7 +21,10 @@ class Passport:
             if key == "ecl":
                 self.eyecolor = value
             if key == "pid":
-                self.passportid = int(value)
+                try:
+                    self.passportid = int(value)
+                except:
+                    self.passportid = "invalid"
             if key == "eyr":
                 self.expirationyear = int(value)
             if key == "hcl":
@@ -52,3 +55,8 @@ class Passport:
             return True
         else:
             return False
+
+
+if __name__ == "__main__":
+    with open("input.txt") as batch:
+        print(count_valid_passports(batch.read()))
