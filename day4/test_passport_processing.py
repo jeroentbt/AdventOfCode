@@ -1,4 +1,4 @@
-from passport_processing import Passport
+from passport_processing import Passport, count_valid_passports
 
 
 def test_recognize_birth_year():
@@ -60,3 +60,14 @@ def test_passport_is_invalid():
              "byr:1937 iyr:2017 cid:147 hgt:183cm")
     passport = Passport(input)
     assert False == passport.is_valid()
+
+
+def test_batch_two_valid_passports():
+    input = ("ecl:gry pid:860033327 eyr:2020 hcl:#fffffd\n"
+             "byr:1937 iyr:2017 cid:147 hgt:183cm\n"
+             "\n"
+             "hcl:#ae17e1 iyr:2013\n"
+             "eyr:2024\n"
+             "ecl:brn pid:760753108 byr:1931\n"
+             "hgt:179cm")
+    assert 2 == count_valid_passports()
