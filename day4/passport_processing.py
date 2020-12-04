@@ -1,3 +1,5 @@
+import re
+
 def count_valid_passports(batch):
     passports = batch.split('\n\n')
     valid_passports = 0
@@ -14,25 +16,25 @@ class Passport:
         fields = self.split_fields(passport_string)
         for f in fields:
             key, value = self.split_kv(f)
-            if key == "byr":
+            if key == "byr" and value.isnumeric() and 1920 <= int(value) <= 2002:
                 self.birthyear = int(value)
-            if key == "iyr":
+            if key == "iyr" and value.isnumeric() and 2010 <= int(value) <= 2020:
                 self.issueyear = int(value)
-            if key == "ecl":
+            if key == "ecl" and value in ("amb", "blu", "brn", "gry", "grn", "hzl", "oth"):
                 self.eyecolor = value
-            if key == "pid":
-                try:
-                    self.passportid = int(value)
-                except:
-                    self.passportid = "invalid"
-            if key == "eyr":
+            if key == "pid" and re.search(r'^\d{9}$', value):
+                self.passportid = int(value)
+            if key == "eyr" and value.isnumeric() and 2020 <= int(value) <= 2030:
                 self.expirationyear = int(value)
-            if key == "hcl":
+            if key == "hcl" and re.search(r'^#[0-9a-f]{6}$', value):
                 self.haircolor = value
             if key == "cid":
                 self.countryid = int(value)
             if key == "hgt":
-                self.height = value
+                r = re.search(r'^(\d+)(cm|in)$', value)
+                if r and ((r.group(2) == "cm" and 150 <= int(r.group(1)) <= 193) or \
+                          (r.group(2) == "in" and 59 <= int(r.group(1)) <= 76)):
+                    self.height = value
 
 
 
