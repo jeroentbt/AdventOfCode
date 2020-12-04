@@ -14,24 +14,24 @@ def test_recognize_birth_year_2():
 
 
 def test_recognize_issue_year():
-    input = "iyr:2000"
+    input = "iyr:2010"
     passport = Passport(input)
-    assert 2000 == passport.issueyear
+    assert 2010 == passport.issueyear
 
 
 def test_recognize_issue_year_and_birth_year_sepparated_with_space():
-    input = "iyr:2000 byr:1900"
+    input = "iyr:2010 byr:1920"
     passport = Passport(input)
-    assert 2000 == passport.issueyear
-    assert 1900 == passport.birthyear
+    assert 2010 == passport.issueyear
+    assert 1920 == passport.birthyear
 
 
 def test_recognize_issue_year_and_birth_year_sepparated_with_newline():
-    input = ("iyr:2000\n"
-             "byr:1900")
+    input = ("iyr:2010\n"
+             "byr:1920")
     passport = Passport(input)
-    assert 2000 == passport.issueyear
-    assert 1900 == passport.birthyear
+    assert 2010 == passport.issueyear
+    assert 1920 == passport.birthyear
 
 
 def test_recognise_all_fields():
@@ -108,4 +108,4 @@ def test_batch_three_of_which_two_valid_passports():
 def test_wrong_value_for_passportid():
     input = "byr:1971 eyr:2039 hgt:172in pid:170cm hcl:17106b iyr:2012 ecl:gry cid:339"
     p = Passport(input)
-    assert "invalid" == p.passportid
+    assert not hasattr(p, "passportid")
