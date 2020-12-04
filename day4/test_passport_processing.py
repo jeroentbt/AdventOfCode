@@ -70,4 +70,20 @@ def test_batch_two_valid_passports():
              "eyr:2024\n"
              "ecl:brn pid:760753108 byr:1931\n"
              "hgt:179cm")
-    assert 2 == count_valid_passports()
+    assert 2 == count_valid_passports(input)
+
+
+def test_batch_three_valid_passports():
+    input = ("ecl:gry pid:860033327 eyr:2020 hcl:#fffffd\n"
+             "byr:1937 iyr:2017 cid:147 hgt:183cm\n"
+             "\n"
+             "hcl:#ae17e1 iyr:2013\n"
+             "eyr:2024\n"
+             "ecl:brn pid:760753108 byr:1931\n"
+             "hgt:179cm\n"
+             "\n"
+             "hcl:#ae17e1 iyr:2013\n"
+             "eyr:2024\n"
+             "ecl:brn pid:760753108 byr:1931\n"
+             "hgt:179cm")
+    assert 3 == count_valid_passports(input)

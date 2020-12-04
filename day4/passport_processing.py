@@ -1,5 +1,5 @@
-def count_valid_passports():
-    return 2
+def count_valid_passports(batch):
+    return len(batch.split('\n\n'))
 
 
 class Passport:
