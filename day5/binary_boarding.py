@@ -7,4 +7,5 @@ def number_from_seatstring(string):
 
 class Seat():
     def __init__(self, seatstring):
-        self.row = number_from_seatstring(seatstring[0:7])
+        self.row = number_from_seatstring(seatstring[:7])
+        self.column = number_from_seatstring(seatstring[7:])

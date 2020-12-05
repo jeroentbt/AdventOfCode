@@ -24,3 +24,4 @@ def test_row_seat():
     input = "BFFFBBFRRR"
     seat = Seat(input)
     assert 70 == seat.row
+    assert 7 == seat.column
