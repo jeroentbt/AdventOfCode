@@ -1,8 +1,15 @@
 def return_row(rowstring):
-    binary_rowstring = rowstring.replace('B', '1').replace('F', '0')
-    return int(binary_rowstring, 2)
+    return number_from_seatstring(rowstring)
 
 
 def return_column(columnstring):
     binary_columnstring = columnstring.replace('R', '1').replace('L', '0')
     return int(binary_columnstring, 2)
+
+
+def number_from_seatstring(string):
+    binary_string = string.replace('B', '1') \
+                          .replace('F', '0') \
+                          .replace('R', '1') \
+                          .replace('L', '0')
+    return int(binary_string, 2)
