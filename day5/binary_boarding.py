@@ -9,3 +9,4 @@ class Seat():
     def __init__(self, seatstring):
         self.row = number_from_seatstring(seatstring[:7])
         self.column = number_from_seatstring(seatstring[7:])
+        self.ID = (self.row * 8) + self.column
