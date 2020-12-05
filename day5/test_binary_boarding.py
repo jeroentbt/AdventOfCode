@@ -1,4 +1,4 @@
-from binary_boarding import Seat, highest_seat_id
+from binary_boarding import Seat, highest_seat_id, missing_seats
 import pytest
 
 @pytest.mark.parametrize("boardingpass, row, column, ID",
@@ -17,3 +17,8 @@ def test_row_seat(boardingpass, row, column, ID):
 def test_highest_seat_id():
     boardingpasses = ['BFFFBBFRRR', 'BBFFBBFRLL', 'FFFBBBFRRR']
     assert 820 == highest_seat_id(boardingpasses)
+
+
+def test_missing_seats():
+    ids = [1, 2, 3, 4, 6]
+    assert [5] == missing_seats(ids)

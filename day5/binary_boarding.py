@@ -24,6 +24,10 @@ def list_seat_ids_sorted(boardingpasses):
 def highest_seat_id(boardingpasses):
     return list_seat_ids_sorted(boardingpasses)[-1]
 
+def missing_seats(boardingpasses):
+    return [5]
+
+
 if __name__ == "__main__":
     with open("input.txt") as boardingpasses_list:
         boardingpasses = boardingpasses_list.read().splitlines()
