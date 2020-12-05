@@ -4,3 +4,7 @@ def number_from_seatstring(string):
                           .replace('R', '1') \
                           .replace('L', '0')
     return int(binary_string, 2)
+
+class Seat():
+    def __init__(self, seatstring):
+        self.row = number_from_seatstring(seatstring[0:7])

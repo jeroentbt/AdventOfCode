@@ -1,4 +1,4 @@
-from binary_boarding import number_from_seatstring
+from binary_boarding import number_from_seatstring, Seat
 
 def test_row_number_from_string():
     input = "BFFFBBF"
@@ -18,3 +18,9 @@ def test_column_number_from_string():
 def test_column_number_from_string_2():
     input = 'RLL'
     assert 4 == number_from_seatstring(input)
+
+
+def test_row_seat():
+    input = "BFFFBBFRRR"
+    seat = Seat(input)
+    assert 70 == seat.row
