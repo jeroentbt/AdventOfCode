@@ -1,4 +1,4 @@
-from binary_boarding import return_row, return_column, number_from_seatstring
+from binary_boarding import number_from_seatstring
 
 def test_row_number_from_string():
     input = "BFFFBBF"
