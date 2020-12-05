@@ -22,3 +22,8 @@ def test_highest_seat_id():
 def test_missing_seats():
     ids = [1, 2, 3, 4, 6]
     assert [5] == missing_seats(ids)
+
+
+def test_missing_seats_2():
+    ids = [1, 2, 3, 5, 6]
+    assert [4] == missing_seats(ids)

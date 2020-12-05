@@ -24,11 +24,15 @@ def list_seat_ids_sorted(boardingpasses):
 def highest_seat_id(boardingpasses):
     return list_seat_ids_sorted(boardingpasses)[-1]
 
-def missing_seats(boardingpasses):
-    return [5]
+def missing_seats(taken_seats):
+    all_seats = [*range(taken_seats[0], taken_seats[-1] + 1)]
+    return list(set(all_seats) - set(taken_seats))
 
 
 if __name__ == "__main__":
     with open("input.txt") as boardingpasses_list:
         boardingpasses = boardingpasses_list.read().splitlines()
+        print("highest IDs")
         print(highest_seat_id(boardingpasses))
+        print("missing seats")
+        print(missing_seats(list_seat_ids_sorted(boardingpasses)))
