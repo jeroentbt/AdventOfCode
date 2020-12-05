@@ -3,8 +3,7 @@ def return_row(rowstring):
 
 
 def return_column(columnstring):
-    binary_columnstring = columnstring.replace('R', '1').replace('L', '0')
-    return int(binary_columnstring, 2)
+    return number_from_seatstring(columnstring)
 
 
 def number_from_seatstring(string):
