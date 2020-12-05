@@ -1,7 +1,7 @@
 class Seat():
-    def __init__(self, seatstring):
-        self.row = self.to_number(seatstring[:7])
-        self.column = self.to_number(seatstring[7:])
+    def __init__(self, boardingpass):
+        self.row = self.to_number(boardingpass[:7])
+        self.column = self.to_number(boardingpass[7:])
         self.ID = (self.row * 8) + self.column
 
 
