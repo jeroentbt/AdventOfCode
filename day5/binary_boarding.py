@@ -13,12 +13,18 @@ class Seat():
         return int(binary_string, 2)
 
 
-def highest_seat_id(boardingpasses):
-    highest = 0
+def list_seat_ids(boardingpasses):
+    list = []
     for boardingpass in boardingpasses:
         seat = Seat(boardingpass)
-        if seat.ID > highest:
-            highest = seat.ID
+        list.append(seat.ID)
+    return list
+
+def highest_seat_id(boardingpasses):
+    highest = 0
+    for ID in list_seat_ids(boardingpasses):
+        if ID > highest:
+            highest = ID
     return highest
 
 if __name__ == "__main__":
