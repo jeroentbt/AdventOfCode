@@ -42,18 +42,35 @@ def test_split_groups():
 
 def test_unique_positives_per_group():
     all_positives = ("abc\n" \
-                   "\n" \
-                   "a" \
-                   "b" \
-                   "c" \
-                   "\n" \
-                   "ab" \
-                   "ac" \
-                   "\n" \
-                   "a" \
-                   "a" \
-                   "a" \
-                   "a" \
-                   "\n" \
-                   "b")
+                     "\n" \
+                     "a\n" \
+                     "b\n" \
+                     "c\n" \
+                     "\n" \
+                     "ab\n" \
+                     "ac\n" \
+                     "\n" \
+                     "a\n" \
+                     "a\n" \
+                     "a\n" \
+                     "a\n" \
+                     "\n" \
+                     "b\n")
     assert [3,3,3,1,1] == grouped_unique_positives(all_positives)
+
+
+def test_unique_positives_per_group():
+    all_positives = ("a\n" \
+                     "b\n" \
+                     "c\n" \
+                     "\n" \
+                     "ab\n" \
+                     "ac\n" \
+                     "\n" \
+                     "a\n" \
+                     "a\n" \
+                     "a\n" \
+                     "a\n" \
+                     "\n" \
+                     "b")
+    assert [3,3,1,1] == grouped_unique_positives(all_positives)

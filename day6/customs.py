@@ -7,4 +7,4 @@ def grouped_positives(all_positives):
 
 
 def grouped_unique_positives(all_positives):
-    return [3,3,3,1,1]
+    return [unique_positives(group) for group in grouped_positives(all_positives)]
