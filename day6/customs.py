@@ -11,12 +11,8 @@ def grouped_unique_positives(all_positives):
 
 
 def number_of_shared_positives(a_groups_positives):
-    positives_per_person = a_groups_positives.splitlines()
-    positives_per_person = [set(a_persons_positives) for a_persons_positives in positives_per_person]
-    print(positives_per_person)
+    positives_per_person = [set(a_persons_positives) for a_persons_positives in a_groups_positives.splitlines()]
     shared_positives = set.intersection(*positives_per_person)
-    print(shared_positives)
-
     return len(shared_positives)
 
 
