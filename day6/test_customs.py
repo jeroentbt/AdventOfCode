@@ -1,4 +1,4 @@
-from customs import unique_yeses, grouped_answers
+from customs import unique_yeses, grouped_answers, grouped_unique_positives
 
 
 def test_count_unique_yeses():
@@ -38,3 +38,22 @@ def test_split_groups():
                    "b\n" \
                    "acs")
     assert ["a", "a", "b\nacs"] == grouped_answers(all_answers)
+
+
+def test_unique_answers_per_group():
+    all_answers = ("abc\n" \
+                   "\n" \
+                   "a" \
+                   "b" \
+                   "c" \
+                   "\n" \
+                   "ab" \
+                   "ac" \
+                   "\n" \
+                   "a" \
+                   "a" \
+                   "a" \
+                   "a" \
+                   "\n" \
+                   "b")
+    assert [3,3,3,1,1] == grouped_unique_positives(all_answers)
