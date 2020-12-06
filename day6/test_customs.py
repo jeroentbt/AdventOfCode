@@ -79,3 +79,9 @@ def test_unique_positives_per_group():
 def test_number_of_shared_positives_in_group():
     a_groups_positives = "abc"
     assert 3 == number_of_shared_positives(a_groups_positives)
+
+
+def test_number_of_shared_positives_in_group_2():
+    a_groups_positives = ("abc\n" \
+                          "a")
+    assert 1 == number_of_shared_positives(a_groups_positives)
