@@ -9,6 +9,9 @@ def grouped_positives(all_positives):
 def grouped_unique_positives(all_positives):
     return [unique_positives(group) for group in grouped_positives(all_positives)]
 
+def grouped_shared_positives(all_positives):
+    return [number_of_shared_positives(group) for group in grouped_positives(all_positives)]
+
 
 def number_of_shared_positives(a_groups_positives):
     positives_per_person = [set(a_persons_positives) for a_persons_positives in a_groups_positives.splitlines()]

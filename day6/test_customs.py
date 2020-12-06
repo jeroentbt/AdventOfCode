@@ -1,5 +1,6 @@
 from customs import unique_positives, grouped_positives, \
-    grouped_unique_positives, number_of_shared_positives
+    grouped_unique_positives, number_of_shared_positives, \
+    grouped_shared_positives
 
 
 def test_count_unique_positives():
@@ -86,3 +87,22 @@ def test_number_of_shared_positives_in_group_2():
     a_groups_positives = ("abc\n"
                           "a")
     assert 1 == number_of_shared_positives(a_groups_positives)
+
+
+def test_shared_positives_per_group():
+    all_positives = ("abc\n"
+                     "\n"
+                     "a\n"
+                     "b\n"
+                     "c\n"
+                     "\n"
+                     "ab\n"
+                     "ac\n"
+                     "\n"
+                     "a\n"
+                     "a\n"
+                     "a\n"
+                     "a\n"
+                     "\n"
+                     "b\n")
+    assert [3, 0, 1, 1, 1] == grouped_shared_positives(all_positives)
