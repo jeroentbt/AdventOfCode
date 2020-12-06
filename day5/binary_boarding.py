@@ -32,7 +32,7 @@ def missing_seats(taken_seats):
 if __name__ == "__main__":
     with open("input.txt") as boardingpasses_list:
         boardingpasses = boardingpasses_list.read().splitlines()
-        print("highest IDs")
+        print("highest ID")
         print(highest_seat_id(boardingpasses))
         print("missing seats")
         print(missing_seats(list_seat_ids_sorted(boardingpasses)))
