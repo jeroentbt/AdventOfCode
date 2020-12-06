@@ -28,3 +28,13 @@ def test_count_split_groups_2():
                    "b\n" \
                    "acs")
     assert 3 == len(grouped_answers(all_answers))
+
+
+def test_split_groups():
+    all_answers = ("a\n" \
+                   "\n" \
+                   "a\n" \
+                   "\n" \
+                   "b\n" \
+                   "acs")
+    assert ["a", "a", "b\nacs"] == grouped_answers(all_answers)
