@@ -1,2 +1,2 @@
 def unique_yeses(a_groups_yeses):
-    return 1
+    return len(set(a_groups_yeses.replace("\n", "")))
