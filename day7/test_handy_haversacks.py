@@ -14,3 +14,8 @@ def test_read_rule_no_bags():
 def test_read_rule_only_single_bags_but_other_colors():
     rule = "light red bags contain 1 bright orange bag, 1 dark orange bag."
     assert {"light red": [("bright orange", 1), ("dark orange", 1)]} == read_rule(rule)
+
+
+def test_read_rule_only_1_bag():
+    rule = "light red bags contain 1 bright orange bag"
+    assert {"light red": [("bright orange", 1)]} == read_rule(rule)

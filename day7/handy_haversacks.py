@@ -9,4 +9,6 @@ def read_rule(rule):
         return {container: []}
     else:
         r = re.findall(r"(\d) (\w+ \w+)", contents)
-        return {container: [(r[0][1], 1), (r[1][1], 1)]}
+        print(r)
+        contained_bags = [(bag[1], 1) for bag in r]
+        return {container: contained_bags}
