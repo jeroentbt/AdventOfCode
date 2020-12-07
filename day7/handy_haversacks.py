@@ -8,7 +8,7 @@ def read_rule(rule):
     if contents == "no other bags.":
         return {container: []}
     else:
-        r = re.findall(r"(\d) (\w+ \w+)", contents)
+        r = re.findall(r"(\d+) (\w+ \w+)", contents)
         print(r)
-        contained_bags = [(bag[1], 1) for bag in r]
+        contained_bags = [(bag[1], int(bag[0])) for bag in r]
         return {container: contained_bags}
