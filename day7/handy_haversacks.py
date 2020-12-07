@@ -19,12 +19,12 @@ def read_rules(rules):
     return processed_rules
 
 
-def can_hold_a_shiny_gold_bag(rules):
+def can_hold_a(bag_to_hold, rules):
     can_hold = []
     processed_rules = read_rules(rules)
     for container_bag, container_rule in processed_rules.items():
         for contained_bag in container_rule:
             bag, amount_ = contained_bag
-            if bag == "shiny gold":
+            if bag == bag_to_hold:
                 can_hold.append(container_bag)
     return can_hold
