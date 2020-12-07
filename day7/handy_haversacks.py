@@ -22,9 +22,9 @@ def read_rules(rules):
 def can_hold_a_shiny_gold_bag(rules):
     can_hold = []
     processed_rules = read_rules(rules)
-    for key, value in processed_rules.items():
-        for contained_bag in value:
+    for container_bag, container_rule in processed_rules.items():
+        for contained_bag in container_rule:
             bag, amount_ = contained_bag
             if bag == "shiny gold":
-                can_hold.append(key)
+                can_hold.append(container_bag)
     return can_hold
