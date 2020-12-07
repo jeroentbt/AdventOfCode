@@ -24,3 +24,5 @@ if __name__ == "__main__":
         all_answers = answers.read()
         print("sum of counts:")
         print(sum(grouped_unique_positives(all_answers)))
+        print("sum of shared positives:")
+        print(sum(grouped_shared_positives(all_answers)))
