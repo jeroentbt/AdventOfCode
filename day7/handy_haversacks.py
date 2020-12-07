@@ -11,7 +11,9 @@ def read_rule(rule):
 
 
 def read_rules(rules):
-    processed_rules = []
+    processed_rules = {}
     for rule in rules.splitlines():
-        processed_rules.append(read_rule(rule))
+        processed_rule = read_rule(rule)
+        bag = list(processed_rule.keys())[0]
+        processed_rules[bag] = processed_rule[bag]
     return processed_rules

@@ -30,8 +30,8 @@ def test_read_multiple_rules():
     rules = ("light red bags contain 8 bright red bags, 1 dark red bag.\n"
              "light green bags contain 1 bright blue bag, 10 dark maroon bags.\n"
              "light maroon bags contain no other bags.")
-    assert [{"light red": [("bright red", 8),
-                           ("dark red", 1)]},
-            {"light green": [("bright blue", 1),
-                             ("dark maroon", 10)]},
-            {"light maroon": []}] == read_rules(rules)
+    assert {"light red": [("bright red", 8),
+                          ("dark red", 1)],
+            "light green": [("bright blue", 1),
+                            ("dark maroon", 10)],
+            "light maroon": []} == read_rules(rules)
