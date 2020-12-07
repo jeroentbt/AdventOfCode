@@ -28,3 +28,18 @@ def can_hold_a(bag_to_hold, rules):
             if bag == bag_to_hold:
                 can_hold.append(container_bag)
     return can_hold
+
+
+def can_hold_a_shiny_gold_bag_eventually(bags_to_hold, rules):
+    can_hold = []
+    processed_rules = read_rules(rules)
+    for container_bag, container_rule in processed_rules.items():
+        for contained_bag in container_rule:
+            bag, amount_ = contained_bag
+            if bag in bags_to_hold:
+                can_hold.append(container_bag)
+    if can_hold == []:
+        return can_hold
+    else:
+        can_hold_a_shiny_gold_bag_eventually(bags_to_hold + can_hold, rules)
+pass

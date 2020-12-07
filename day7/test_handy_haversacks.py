@@ -1,4 +1,4 @@
-from handy_haversacks import read_rule, read_rules, can_hold_a_shiny_gold_bag
+from handy_haversacks import read_rule, read_rules, can_hold_a, can_hold_a_shiny_gold_bag_eventually
 
 
 def test_read_rule_only_single_bags():
@@ -47,7 +47,7 @@ def test_can_hold_a_shiny_gold_bag_1():
              "vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.\n"
              "faded blue bags contain no other bags.\n"
              "dotted black bags contain no other bags.\n")
-    assert ["bright white"] == can_hold_a_shiny_gold_bag(rules)
+    assert ["bright white"] == can_hold_a("shiny gold", rules)
 
 
 def test_can_hold_a_shiny_gold_bag_2():
@@ -60,4 +60,17 @@ def test_can_hold_a_shiny_gold_bag_2():
              "vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.\n"
              "faded blue bags contain no other bags.\n"
              "dotted black bags contain no other bags.\n")
-    assert ["bright white", "muted yellow"] == can_hold_a_shiny_gold_bag(rules)
+    assert ["bright white", "muted yellow"] == can_hold_a("shiny gold", rules)
+
+
+def test_can_hold_a_shiny_gold_bag_eventually():
+    rules = ("light red bags contain 1 bright white bag, 2 muted yellow bags.\n"
+             "dark orange bags contain 3 bright white bags, 4 muted yellow bags.\n"
+             "bright white bags contain 1 shiny gold bag.\n"
+             "muted yellow bags contain 2 shiny gold bags, 9 faded blue bags.\n"
+             "shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.\n"
+             "dark olive bags contain 3 faded blue bags, 4 dotted black bags.\n"
+             "vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.\n"
+             "faded blue bags contain no other bags.\n"
+             "dotted black bags contain no other bags.\n")
+    assert ["bright white", "muted yellow", "dark orange", "light red"] == can_hold_a_shiny_gold_bag_eventually(["shiny gold"], rules)
