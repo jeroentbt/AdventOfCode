@@ -17,3 +17,14 @@ def read_rules(rules):
         bag = list(processed_rule.keys())[0]
         processed_rules[bag] = processed_rule[bag]
     return processed_rules
+
+
+def can_hold_a_shiny_gold_bag(rules):
+    can_hold = []
+    processed_rules = read_rules(rules)
+    for key, value in processed_rules.items():
+        for contained_bag in value:
+            bag, amount_ = contained_bag
+            if bag == "shiny gold":
+                can_hold.append(key)
+    return can_hold
