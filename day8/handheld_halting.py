@@ -16,3 +16,9 @@ def run_program(program, result=0, next_step=0):
         if next_step < len(program):
             result = run_program(program, result, next_step)
     return result
+
+
+if __name__ == "__main__":
+    with open("input.txt") as progfile:
+        print('one run results in:')
+        print(run_program(read_prog(progfile.read())))

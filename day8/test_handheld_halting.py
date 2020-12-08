@@ -39,3 +39,17 @@ def test_loop_it_should_not():
              ('acc', 1, 0),
              ('jmp', -2, 0)]
     assert 2 == run_program(input)
+
+
+def test_full_run_looped():
+    input = ("nop +0\n"
+             "acc +1\n"
+             "jmp +4\n"
+             "acc +3\n"
+             "jmp -3\n"
+             "acc -99\n"
+             "acc +1\n"
+             "jmp -4\n"
+             "acc +6")
+    program = read_prog(input)
+    assert 5 == run_program(program)
