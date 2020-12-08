@@ -73,4 +73,4 @@ def test_can_hold_a_shiny_gold_bag_eventually():
              "vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.\n"
              "faded blue bags contain no other bags.\n"
              "dotted black bags contain no other bags.\n")
-    assert ["bright white", "muted yellow", "dark orange", "light red"] == can_hold_a_shiny_gold_bag_eventually(["shiny gold"], rules)
+    assert ['bright white', 'muted yellow', 'light red', 'dark orange'] == can_hold_a_shiny_gold_bag_eventually(rules)

@@ -30,16 +30,30 @@ def can_hold_a(bag_to_hold, rules):
     return can_hold
 
 
-def can_hold_a_shiny_gold_bag_eventually(bags_to_hold, rules):
-    can_hold = []
+def can_hold_a_shiny_gold_bag_eventually(rules):
     processed_rules = read_rules(rules)
-    for container_bag, container_rule in processed_rules.items():
-        for contained_bag in container_rule:
-            bag, amount_ = contained_bag
-            if bag in bags_to_hold:
-                can_hold.append(container_bag)
-    if can_hold == []:
-        return can_hold
-    else:
-        can_hold_a_shiny_gold_bag_eventually(bags_to_hold + can_hold, rules)
-pass
+    bags = find_container_for(["shiny gold"], [], processed_rules)
+    print('BAGS', bags)
+    return bags
+
+
+def find_container_for(list_of_bags_to_find_container_for,
+                       known_containers,
+                       rules):
+    found_containers = []
+    # print('known containers: ', known_containers)
+    # print('list_of_bags_to_find_container_for: ', list_of_bags_to_find_container_for)
+    if list_of_bags_to_find_container_for != ["shiny gold"]:
+        known_containers += list_of_bags_to_find_container_for
+    # print('known_containers', known_containers)
+    for container_bag, content_rule in rules.items():
+        for contained_bag, amount_ in content_rule:
+            # print(contained_bag)
+            if contained_bag in list_of_bags_to_find_container_for:
+                # print('found one!')
+                found_containers.append(container_bag)
+    # print('found_containers: ', found_containers)
+    if found_containers != []:
+        find_container_for(set(found_containers), known_containers, rules)
+    # print('known_containers: ', known_containers)
+    return known_containers
