@@ -8,9 +8,11 @@ def read_prog(input):
 
 def run_program(program, result=0, next_step=0):
     operation, argument, runs = program[next_step]
-    if operation == 'acc':
-        result += argument
-    next_step += argument if operation == 'jmp' else 1
-    if next_step < len(program):
-        result = run_program(program, result, next_step)
+    if runs == 0:
+        program[next_step] = (operation, argument, 1)
+        if operation == 'acc':
+            result += argument
+        next_step += argument if operation == 'jmp' else 1
+        if next_step < len(program):
+            result = run_program(program, result, next_step)
     return result

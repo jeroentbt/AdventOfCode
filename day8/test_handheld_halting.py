@@ -35,7 +35,7 @@ def test_first_jump_forward():
 
 
 def test_loop_it_should_not():
-    input = [('acc', 1),
-             ('acc', 1),
-             ('jmp', -2)]
+    input = [('acc', 1, 0),
+             ('acc', 1, 0),
+             ('jmp', -2, 0)]
     assert 2 == run_program(input)
