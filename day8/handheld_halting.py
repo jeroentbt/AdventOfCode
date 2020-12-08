@@ -7,4 +7,7 @@ def read_prog(input):
 
 
 def run_program(program):
-    return 10
+    result = 0
+    for operation_, argument in program:
+        result += argument
+    return result

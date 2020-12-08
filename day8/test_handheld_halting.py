@@ -11,3 +11,9 @@ def test_only_accumulators():
     input = [('acc', 1),
              ('acc', 9)]
     assert 10 == run_program(input)
+
+
+def test_only_accumulators_to_negative():
+    input = [('acc', 1),
+             ('acc', -11)]
+    assert -10 == run_program(input)
