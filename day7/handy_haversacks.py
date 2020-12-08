@@ -56,11 +56,30 @@ def find_container_for(list_of_bags_to_find_container_for,
     if found_containers != []:
         find_container_for(set(found_containers), known_containers, rules)
     # print('known_containers: ', known_containers)
-    return set(known_containers)
+    return list(set(known_containers))
+
+
+def find_contents_for(list_of_bags_to_find_contents_for, current_number, rules):
+    processed_rules = read_rules(rules)
+
+    found_bags = []
+    for bag in list_of_bags_to_find_contents_for:
+
+        for contained_bag, amount in processed_rules[bag]:
+            found_bags += [contained_bag] * amount
+            current_number.append(amount)
+    if found_bags != []:
+        find_contents_for(found_bags, current_number, rules)
+    return current_number
+
+
+
 
 
 if __name__ == "__main__":
     with open("input.txt") as rulefile:
-        bags_that_contaon_shiny_gold = can_hold_a_shiny_gold_bag_eventually(rulefile.read())
-        print('number of bags that can contain  shiny gold:')
-        print(len(bags_that_contaon_shiny_gold))
+        # bags_that_contaon_shiny_gold = can_hold_a_shiny_gold_bag_eventually(rulefile.read())
+        # print('number of bags that can contain  shiny gold:')
+        # print(len(bags_that_contaon_shiny_gold))
+        print('bags inside:')
+        print(sum(find_contents_for(["shiny gold"], [], rulefile.read())))
