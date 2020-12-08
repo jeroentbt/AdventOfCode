@@ -56,4 +56,11 @@ def find_container_for(list_of_bags_to_find_container_for,
     if found_containers != []:
         find_container_for(set(found_containers), known_containers, rules)
     # print('known_containers: ', known_containers)
-    return known_containers
+    return set(known_containers)
+
+
+if __name__ == "__main__":
+    with open("input.txt") as rulefile:
+        bags_that_contaon_shiny_gold = can_hold_a_shiny_gold_bag_eventually(rulefile.read())
+        print('number of bags that can contain  shiny gold:')
+        print(len(bags_that_contaon_shiny_gold))
