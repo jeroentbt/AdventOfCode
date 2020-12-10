@@ -15,3 +15,13 @@ def diffs(jumps):
     diffs['two'] = jumps.count(2)
     diffs['three'] = jumps.count(3)
     return diffs
+
+
+if __name__ == '__main__':
+    with open('input.txt') as bag_of_adapters:
+        list_of_adapters = bag_of_adapters.readlines()
+        list_of_adapters = [int(i) for i in list_of_adapters]
+    print('the number of 1-jolt differences multiplied by '
+          'the number of 3-jolt differences:')
+    differences = diffs(list_jumps(list_of_adapters))
+    print(differences['one'] * differences['three'])
