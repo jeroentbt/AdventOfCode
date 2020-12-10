@@ -18,7 +18,6 @@ def is_sum_of_consecutive(the_sum, the_numbers):
     for i, n in enumerate(the_numbers):
         for j in range(i + 1, len(the_numbers) + 1):
             selection = the_numbers[i:j]
-            print(selection)
             this_sum = sum(selection)
             if this_sum == the_sum:
                 return selection
@@ -27,4 +26,10 @@ def is_sum_of_consecutive(the_sum, the_numbers):
 if __name__ == "__main__":
     with open("input.txt") as XMASdata:
         XMAS = [int(i) for i in XMASdata.readlines()]
-        print(first_number_that_is_not_sum_of_two_in_preamble(25, XMAS))
+        print("first weakness")
+        first_weakness = first_number_that_is_not_sum_of_two_in_preamble(25, XMAS)
+        print(first_weakness)
+        print('second weakness:')
+        second_weakness_list = is_sum_of_consecutive(first_weakness, XMAS)
+        second_weakness = min(second_weakness_list) + max(second_weakness_list)
+        print(second_weakness)
