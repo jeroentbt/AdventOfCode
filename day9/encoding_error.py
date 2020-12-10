@@ -14,6 +14,16 @@ def first_number_that_is_not_sum_of_two_in_preamble(preamble, the_list):
             return n
 
 
+def is_sum_of_consecutive(the_sum, the_numbers):
+    for i, n in enumerate(the_numbers):
+        for j in range(i + 1, len(the_numbers) + 1):
+            selection = the_numbers[i:j]
+            print(selection)
+            this_sum = sum(selection)
+            if this_sum == the_sum:
+                return selection
+
+
 if __name__ == "__main__":
     with open("input.txt") as XMASdata:
         XMAS = [int(i) for i in XMASdata.readlines()]

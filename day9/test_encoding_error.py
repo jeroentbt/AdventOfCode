@@ -1,5 +1,6 @@
 from encoding_error import is_sum_of_2_in, \
-    first_number_that_is_not_sum_of_two_in_preamble
+    first_number_that_is_not_sum_of_two_in_preamble, \
+    is_sum_of_consecutive
 
 
 def test_is_sum_of_2():
@@ -51,3 +52,16 @@ def test_find_first_number_that_fails_test_3():
                 117, 150, 182, 127, 219, 299, 277, 309, 576]
     preamble = 5
     assert 127 == first_number_that_is_not_sum_of_two_in_preamble(preamble, the_list)
+
+
+def test_is_sum_of_consecutive():
+    the_sum = 10
+    the_numbers = [5, 8, 1, 1]
+    assert [8, 1, 1] == is_sum_of_consecutive(the_sum, the_numbers)
+
+
+def test_is_sum_of_consecutive_2():
+    the_sum = 127
+    the_numbers = [35, 20, 15, 25, 47, 40, 62, 55, 65, 95, 102,
+                   117, 150, 182, 127, 219, 299, 277, 309, 576]
+    assert [15, 25, 47, 40] == is_sum_of_consecutive(the_sum, the_numbers)
