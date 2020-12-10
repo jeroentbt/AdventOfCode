@@ -1,4 +1,5 @@
 def list_jumps(adapters):
+    adapters.append(0)  # outlet is 0 jolts
     adapters.sort()
     jumps = []
     for i, joltage in enumerate(adapters[:-1]):
