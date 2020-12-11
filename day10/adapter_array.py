@@ -17,6 +17,11 @@ def diffs(jumps):
     return diffs
 
 
+def possibilities(jumps):
+    return 0
+
+
+
 if __name__ == '__main__':
     with open('input.txt') as bag_of_adapters:
         list_of_adapters = bag_of_adapters.readlines()
