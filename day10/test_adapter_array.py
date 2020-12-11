@@ -37,6 +37,9 @@ def test_given_example_2():
 
 
 def test_no_variations():
+    jumps = list_jumps([1, 4, 7])
+    assert 1 == variations(jumps)
+
     jumps = list_jumps([3, 3, 3])
     assert 1 == variations(jumps)
 
