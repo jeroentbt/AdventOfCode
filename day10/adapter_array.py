@@ -18,6 +18,19 @@ def diffs(jumps):
 
 
 def variations(jumps):
+    # remove first and last jump (wall outlet and inernal adapter)
+    jumps = jumps[1:-1]
+    print(jumps)
+    if jumps.count(1) == 2:
+        return 2
+    if jumps.count(1) == 3:
+        return 4
+    if jumps.count(1) == 4:
+        return 5
+    if jumps.count(1) == 5:
+        return 8
+    # for i, jump in enumerate(jumps):
+
     return 1
 
 

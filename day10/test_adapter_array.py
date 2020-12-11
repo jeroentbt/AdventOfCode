@@ -36,12 +36,35 @@ def test_given_example_2():
     assert 10 == differences['three']
 
 
-def test_no_variations():
+def test_one_variations():
     jumps = list_jumps([1, 4, 7])
     assert 1 == variations(jumps)
 
-    jumps = list_jumps([3, 3, 3])
+
+def test_variarions_with_2_consecutive_numbers():
+    jumps = list_jumps([1, 2, 5, 8])
     assert 1 == variations(jumps)
+
+
+def test_variarions_with_3_consecutive_numbers():
+    jumps = list_jumps([1, 2, 3, 6, 9])
+    assert 2 == variations(jumps)
+
+
+def test_variarions_with_4_consecutive_numbers():
+    jumps = list_jumps([1, 2, 3, 4, 7, 10])
+    assert 4 == variations(jumps)
+
+
+def test_variarions_with_5_consecutive_numbers():
+    jumps = list_jumps([1, 2, 3, 4, 5, 8, 11])
+    assert 5 == variations(jumps)
+
+
+def test_variarions_with_6_consecutive_numbers():
+    jumps = list_jumps([1, 2, 3, 4, 5, 6, 9])
+    assert 8 == variations(jumps)
+
 
 
 # def test_variations_1():
