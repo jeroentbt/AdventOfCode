@@ -1,4 +1,4 @@
-from adapter_array import list_jumps, diffs, possibilities
+from adapter_array import list_jumps, diffs, variations
 
 
 def test_no_jumps():
@@ -36,17 +36,17 @@ def test_given_example_2():
     assert 10 == differences['three']
 
 
-def test_no_possibilities():
+def test_no_variations():
     jumps = list_jumps([3, 3, 3])
-    assert 0 == possibilities(jumps)
+    assert 1 == variations(jumps)
 
 
-# def test_possibilities_1():
+# def test_variations_1():
 #     adapters = [16, 10, 15, 5, 1, 11, 7, 19, 6, 12, 4]
-#     assert 8 == possibilities(list_jumps(adapters))
+#     assert 8 == variations(list_jumps(adapters))
 
 
-# def test_possibilities_2():
+# def test_variations_2():
 #     adapters = [28, 33, 18, 42, 31, 14, 46, 20, 48, 47, 24, 23, 49, 45, 19,
 #                 38, 39, 11, 1, 32, 25, 35, 8, 17, 7, 9, 4, 2, 34, 10, 3]
-#     assert 19208 == possibilities(list_jumps(adapters))
+#     assert 19208 == variations(list_jumps(adapters))

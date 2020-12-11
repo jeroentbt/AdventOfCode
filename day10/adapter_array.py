@@ -17,8 +17,8 @@ def diffs(jumps):
     return diffs
 
 
-def possibilities(jumps):
-    return 0
+def variations(jumps):
+    return 1
 
 
 
