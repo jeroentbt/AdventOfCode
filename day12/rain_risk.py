@@ -19,7 +19,10 @@ class Boat():
         if action == "L":
             self.facing -= value
         if action == "F":
-            self.longtitude += 10
+            self.forward(10)
+
+    def forward(self, value):
+        self.longtitude += value
 
 
 
