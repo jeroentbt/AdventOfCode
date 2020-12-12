@@ -49,6 +49,9 @@ def evolve(grid):
             if position == "L" and \
                adjacent_occupied_seats_for(row_num, col_num, grid) == 0:
                 evolved_grid[row_num][col_num] = "#"
+            elif position == "#" and \
+                 adjacent_occupied_seats_for(row_num, col_num, grid) >= 4:
+                evolved_grid[row_num][col_num] = "L"
             else:
                 evolved_grid[row_num][col_num] = grid[row_num][col_num]
     return evolved_grid
