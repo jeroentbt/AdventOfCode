@@ -22,10 +22,15 @@ class Boat():
             self.forward(10)
 
     def forward(self, value):
-        if self.facing == 90:
-            self.longtitude += value
-        if self.facing == 270:
-            self.longtitude -= value
+        directions = ["N", "E", "S", "W"]
+        general_direction = directions[self.facing//90]
+        deviation = self.facing % 90
+        print(general_direction)
+        print(deviation)
+
+        if deviation == 0:
+            self.move((general_direction, value))
+
 
 
 
