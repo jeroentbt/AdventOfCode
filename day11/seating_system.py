@@ -58,4 +58,8 @@ def evolve(grid):
 
 
 def evolve_to_stable(grid):
-    pass
+    new_grid = evolve(grid)
+    if new_grid == grid:
+        return grid
+    else:
+        return evolve_to_stable(new_grid)
