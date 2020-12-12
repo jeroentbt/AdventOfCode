@@ -1,4 +1,4 @@
-from adapter_array import list_jumps, diffs, variations
+from adapter_array import list_jumps, diffs, variations, split_jumps
 
 
 def test_no_jumps():
@@ -42,37 +42,56 @@ def test_one_variations():
 
 
 def test_variarions_with_2_consecutive_numbers():
-    jumps = list_jumps([1, 2, 5, 8])
+    jumps = list_jumps([1, 4])
     assert 1 == variations(jumps)
 
 
 def test_variarions_with_3_consecutive_numbers():
-    jumps = list_jumps([1, 2, 3, 6, 9])
+    jumps = list_jumps([1, 2, 5])
     assert 2 == variations(jumps)
 
 
 def test_variarions_with_4_consecutive_numbers():
-    jumps = list_jumps([1, 2, 3, 4, 7, 10])
+    jumps = list_jumps([1, 2, 3, 6])
     assert 4 == variations(jumps)
 
 
 def test_variarions_with_5_consecutive_numbers():
-    jumps = list_jumps([1, 2, 3, 4, 5, 8, 11])
-    assert 5 == variations(jumps)
+    jumps = list_jumps([1, 2, 3, 4, 7])
+    assert 7 == variations(jumps)
 
 
-def test_variarions_with_6_consecutive_numbers():
-    jumps = list_jumps([1, 2, 3, 4, 5, 6, 9])
-    assert 8 == variations(jumps)
+def test_split():
+    jumps = [1, 1, 1, 1, 3, 3, 1, 1]
+    assert ['1111', '11'] == split_jumps(jumps)
 
 
+def test_variations_r1():
+    adapters = [10, 6, 4, 7, 1, 5]
+    assert 4 == variations(list_jumps(adapters))
 
-# def test_variations_1():
-#     adapters = [16, 10, 15, 5, 1, 11, 7, 19, 6, 12, 4]
-#     assert 8 == variations(list_jumps(adapters))
+
+def test_variations_r2():
+    adapters = [4, 11, 7, 8, 1, 6, 5]
+    assert 7 == variations(list_jumps(adapters))
 
 
-# def test_variations_2():
-#     adapters = [28, 33, 18, 42, 31, 14, 46, 20, 48, 47, 24, 23, 49, 45, 19,
-#                 38, 39, 11, 1, 32, 25, 35, 8, 17, 7, 9, 4, 2, 34, 10, 3]
-#     assert 19208 == variations(list_jumps(adapters))
+def test_variations_r3():
+    adapters = [3, 1, 6, 2]
+    assert 4 == variations(list_jumps(adapters))
+
+
+def test_variations_r4():
+    adapters = [17, 6, 10, 5, 13, 7, 1, 4, 12, 11, 14]
+    assert 28 == variations(list_jumps(adapters))
+
+
+def test_variations_1():
+    adapters = [16, 10, 15, 5, 1, 11, 7, 19, 6, 12, 4]
+    assert 8 == variations(list_jumps(adapters))
+
+
+def test_variations_2():
+    adapters = [28, 33, 18, 42, 31, 14, 46, 20, 48, 47, 24, 23, 49, 45, 19,
+                38, 39, 11, 1, 32, 25, 35, 8, 17, 7, 9, 4, 2, 34, 10, 3]
+    assert 19208 == variations(list_jumps(adapters))

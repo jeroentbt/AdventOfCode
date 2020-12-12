@@ -18,21 +18,31 @@ def diffs(jumps):
 
 
 def variations(jumps):
-    # remove first and last jump (wall outlet and inernal adapter)
-    jumps = jumps[1:-1]
+    variations = 1
     print(jumps)
-    if jumps.count(1) == 2:
-        return 2
-    if jumps.count(1) == 3:
-        return 4
-    if jumps.count(1) == 4:
-        return 5
-    if jumps.count(1) == 5:
-        return 8
-    # for i, jump in enumerate(jumps):
+    for seq in split_jumps(jumps):
+        print(seq)
+        if seq.count('1') == 2:
+            the_number = 2
+        elif seq.count('1') == 3:
+            the_number = 4
+        elif seq.count('1') == 4:
+            the_number = 7
+        # for i, jump in enumerate(jumps):
+        else:
+            the_number = 0
 
-    return 1
+        if the_number != 0:
+            variations = variations * the_number
+    return variations
 
+
+def split_jumps(jumps):
+    jumps = [str(i) for i in jumps]
+    jumpstring = ''.join(jumps)
+    jump_parts = jumpstring.split('3')
+    jump_parts = [seq for seq in jump_parts if seq != '']
+    return jump_parts
 
 
 if __name__ == '__main__':
@@ -43,3 +53,5 @@ if __name__ == '__main__':
           'the number of 3-jolt differences:')
     differences = diffs(list_jumps(list_of_adapters))
     print(differences['one'] * differences['three'])
+    print('possible variations')
+    print(variations(list_jumps(list_of_adapters)))
