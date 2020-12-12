@@ -50,3 +50,9 @@ def test_turn_left():
     b = Boat()
     b.move(("L", 100))
     assert -10 == b.facing
+
+
+def test_move_forward_starting_direction():
+    b = Boat()
+    b.move(("F", 10))
+    assert 10 == b.longtitude

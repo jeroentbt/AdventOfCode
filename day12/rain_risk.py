@@ -18,6 +18,8 @@ class Boat():
             self.facing += value
         if action == "L":
             self.facing -= value
+        if action == "F":
+            self.longtitude += 10
 
 
 
