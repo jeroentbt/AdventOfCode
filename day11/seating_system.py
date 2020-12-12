@@ -55,3 +55,7 @@ def evolve(grid):
             else:
                 evolved_grid[row_num][col_num] = grid[row_num][col_num]
     return evolved_grid
+
+
+def evolve_to_stable(grid):
+    pass

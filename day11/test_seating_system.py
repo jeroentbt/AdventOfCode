@@ -1,4 +1,5 @@
-from seating_system import read_grid, adjacent_occupied_seats_for, evolve
+from seating_system import read_grid, adjacent_occupied_seats_for, \
+    evolve, evolve_to_stable
 
 
 def test_read_grid_all_floor():
@@ -91,3 +92,28 @@ def test_seats_with_4_or_more_neighbours_are_vacated():
                          "#.LLLLLL.L\n"
                          "#.#LLLL.##")
     assert grid_out == evolve(grid_in)
+
+
+
+def test_untill_stable():
+    grid_in = read_grid("L.LL.LL.LL\n"
+                        "LLLLLLL.LL\n"
+                        "L.L.L..L..\n"
+                        "LLLL.LL.LL\n"
+                        "L.LL.LL.LL\n"
+                        "L.LLLLL.LL\n"
+                        "..L.L.....\n"
+                        "LLLLLLLLLL\n"
+                        "L.LLLLLL.L\n"
+                        "L.LLLLL.LL")
+    grid_out = read_grid("#.#L.L#.##\n"
+                         "#LLL#LL.L#\n"
+                         "L.#.L..#..\n"
+                         "#L##.##.L#\n"
+                         "#.#L.LL.LL\n"
+                         "#.#L#L#.##\n"
+                         "..L.L.....\n"
+                         "#L#L##L#L#\n"
+                         "#.LLLLLL.L\n"
+                         "#.#L#L#.##")
+    assert grid_out == evolve_to_stable(grid_in)
