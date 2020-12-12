@@ -41,12 +41,13 @@ def seat_in_direction_occupied(row, column, horizontal, vertical, grid):
     if 0 <= row < nmb_of_cols and \
        0 <= column < nmb_of_rows:
         position = grid[row][column]
-        print(position)
         if position == occupied:
-            print(row, column)
             return True
         if position == empty:
             return False
+    else:
+        return False
+
     return seat_in_direction_occupied(row, column, horizontal, vertical, grid)
 
 
