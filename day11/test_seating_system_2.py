@@ -81,28 +81,29 @@ def test_empty_seats_with_no_neighbours_get_occupied():
 #     assert grid_out == evolve(grid_in)
 
 
-# def test_untill_stable():
-#     grid_in = read_grid("L.LL.LL.LL\n"
-#                         "LLLLLLL.LL\n"
-#                         "L.L.L..L..\n"
-#                         "LLLL.LL.LL\n"
-#                         "L.LL.LL.LL\n"
-#                         "L.LLLLL.LL\n"
-#                         "..L.L.....\n"
-#                         "LLLLLLLLLL\n"
-#                         "L.LLLLLL.L\n"
-#                         "L.LLLLL.LL")
-#     grid_out = read_grid("#.#L.L#.##\n"
-#                          "#LLL#LL.L#\n"
-#                          "L.#.L..#..\n"
-#                          "#L##.##.L#\n"
-#                          "#.#L.LL.LL\n"
-#                          "#.#L#L#.##\n"
-#                          "..L.L.....\n"
-#                          "#L#L##L#L#\n"
-#                          "#.LLLLLL.L\n"
-#                          "#.#L#L#.##")
-#     assert grid_out == evolve_to_stable(grid_in)
+def test_untill_stable():
+    grid_in = read_grid("L.LL.LL.LL\n"
+                        "LLLLLLL.LL\n"
+                        "L.L.L..L..\n"
+                        "LLLL.LL.LL\n"
+                        "L.LL.LL.LL\n"
+                        "L.LLLLL.LL\n"
+                        "..L.L.....\n"
+                        "LLLLLLLLLL\n"
+                        "L.LLLLLL.L\n"
+                        "L.LLLLL.LL")
+    grid_out = read_grid("#.L#.L#.L#\n"
+                         "#LLLLLL.LL\n"
+                         "L.L.L..#..\n"
+                         "##L#.#L.L#\n"
+                         "L.L#.LL.L#\n"
+                         "#.LLLL#.LL\n"
+                         "..#.L.....\n"
+                         "LLL###LLL#\n"
+                         "#.LLLLL#.L\n"
+                         "#.L#LL#.L#")
+    print(evolve_to_stable(grid_in))
+    assert grid_out == evolve_to_stable(grid_in)
 
 
 def test_count_occupied_seats():
