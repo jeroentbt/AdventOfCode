@@ -63,3 +63,16 @@ def evolve_to_stable(grid):
         return grid
     else:
         return evolve_to_stable(new_grid)
+
+
+def count_occupied_seats(grid):
+    seats = 0
+    for row in grid:
+        seats += ''.join(row).count('#')
+    return seats
+
+
+if __name__ == "__main__":
+    with open("input.txt") as input_txt:
+        grid_as_text = input_txt.read()
+        print((count_occupied_seats(evolve_to_stable(read_grid(grid_as_text)))))

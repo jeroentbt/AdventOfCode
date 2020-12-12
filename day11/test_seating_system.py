@@ -1,5 +1,5 @@
 from seating_system import read_grid, adjacent_occupied_seats_for, \
-    evolve, evolve_to_stable
+    evolve, evolve_to_stable, count_occupied_seats
 
 
 def test_read_grid_all_floor():
@@ -94,7 +94,6 @@ def test_seats_with_4_or_more_neighbours_are_vacated():
     assert grid_out == evolve(grid_in)
 
 
-
 def test_untill_stable():
     grid_in = read_grid("L.LL.LL.LL\n"
                         "LLLLLLL.LL\n"
@@ -117,3 +116,17 @@ def test_untill_stable():
                          "#.LLLLLL.L\n"
                          "#.#L#L#.##")
     assert grid_out == evolve_to_stable(grid_in)
+
+
+def test_count_occupied_seats():
+    grid_in = read_grid("#.#L.L#.##\n"
+                        "#LLL#LL.L#\n"
+                        "L.#.L..#..\n"
+                        "#L##.##.L#\n"
+                        "#.#L.LL.LL\n"
+                        "#.#L#L#.##\n"
+                        "..L.L.....\n"
+                        "#L#L##L#L#\n"
+                        "#.LLLLLL.L\n"
+                        "#.#L#L#.##")
+    assert 37 == count_occupied_seats(grid_in)
