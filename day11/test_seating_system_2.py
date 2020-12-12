@@ -57,30 +57,6 @@ def test_empty_seats_with_no_neighbours_get_occupied():
     assert grid_out == evolve(grid_in)
 
 
-# def test_seats_with_4_or_more_neighbours_are_vacated():
-#     grid_in = read_grid("#.##.##.##\n"
-#                         "#######.##\n"
-#                         "#.#.#..#..\n"
-#                         "####.##.##\n"
-#                         "#.##.##.##\n"
-#                         "#.#####.##\n"
-#                         "..#.#.....\n"
-#                         "##########\n"
-#                         "#.######.#\n"
-#                         "#.#####.##")
-#     grid_out = read_grid("#.LL.L#.##\n"
-#                          "#LLLLLL.L#\n"
-#                          "L.L.L..L..\n"
-#                          "#LLL.LL.L#\n"
-#                          "#.LL.LL.LL\n"
-#                          "#.LLLL#.##\n"
-#                          "..L.L.....\n"
-#                          "#LLLLLLLL#\n"
-#                          "#.LLLLLL.L\n"
-#                          "#.#LLLL.##")
-#     assert grid_out == evolve(grid_in)
-
-
 def test_untill_stable():
     grid_in = read_grid("L.LL.LL.LL\n"
                         "LLLLLLL.LL\n"

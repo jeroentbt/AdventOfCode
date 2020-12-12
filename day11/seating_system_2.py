@@ -38,8 +38,8 @@ def seat_in_direction_occupied(row, column, horizontal, vertical, grid):
     row += vertical
     column += horizontal
 
-    if 0 <= row < nmb_of_cols and \
-       0 <= column < nmb_of_rows:
+    if 0 <= row < nmb_of_rows and \
+       0 <= column < nmb_of_cols:
         position = grid[row][column]
         if position == occupied:
             return True
