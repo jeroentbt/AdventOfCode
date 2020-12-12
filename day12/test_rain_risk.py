@@ -49,10 +49,36 @@ def test_turn_right():
 def test_turn_left():
     b = Boat()
     b.move(("L", 100))
-    assert -10 == b.facing
+    assert 350 == b.facing
+
+
+def test_turn_beyond_360():
+    b = Boat()
+    b.move(("R", 280))
+    assert 10 == b.facing
+
+
+def test_turn_back_beyond_360():
+    b = Boat()
+    b.move(("L", 100))
+    assert 350 == b.facing
+
+
+def test_turn_back_beyond_360_2():
+    b = Boat()
+    b.move(("L", 100))
+    b.move(("L", 90))
+    assert 260 == b.facing
 
 
 def test_move_forward_starting_direction():
     b = Boat()
     b.move(("F", 10))
     assert 10 == b.longtitude
+
+
+def test_move_forward_after_turning_180():
+    b = Boat()
+    b.move(("L", 180))
+    b.move(("F", 10))
+    assert -10 == b.longtitude

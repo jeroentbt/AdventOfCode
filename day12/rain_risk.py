@@ -15,14 +15,17 @@ class Boat():
         if action == "W":
             self.longtitude -= value
         if action == "R":
-            self.facing += value
+            self.facing = (self.facing + value) % 360
         if action == "L":
-            self.facing -= value
+            self.facing = (self.facing - value) % 360
         if action == "F":
             self.forward(10)
 
     def forward(self, value):
-        self.longtitude += value
+        if self.facing == 90:
+            self.longtitude += value
+        if self.facing == 270:
+            self.longtitude -= value
 
 
 
