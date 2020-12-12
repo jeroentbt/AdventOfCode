@@ -30,15 +30,24 @@ def adjacent_occupied_seats_for(row, column, grid):
 
 def seat_in_direction_occupied(row, column, horizontal, vertical, grid):
     occupied = "#"
+    empty = "L"
 
     nmb_of_rows = len(grid)
     nmb_of_cols = len(grid[0])
 
-    if 0 <= row + vertical < nmb_of_cols and \
-       0 <= column + horizontal < nmb_of_rows:
-        if grid[row + vertical][column + horizontal] == occupied:
+    row += vertical
+    column += horizontal
+
+    if 0 <= row < nmb_of_cols and \
+       0 <= column < nmb_of_rows:
+        position = grid[row][column]
+        print(position)
+        if position == occupied:
+            print(row, column)
             return True
-    return False
+        if position == empty:
+            return False
+    return seat_in_direction_occupied(row, column, horizontal, vertical, grid)
 
 
 def evolve(grid):
