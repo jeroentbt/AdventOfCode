@@ -16,26 +16,33 @@ class Boat():
         if action == "W":
             self.waypoint_longtitude -= value
         if action == "R":
+            print('-' * 20)
+            print('right', value)
             self.turn(value)
         if action == "L":
+            print('-' * 20)
+            print('left', value)
             self.turn(-value)
         if action == "F":
             self.forward(value)
-        # print(self.longtitude, self.latitude)
+        print(self.longtitude, self.latitude)
+        print("-->", self.waypoint_longtitude, self.waypoint_latitude)
 
     def turn(self, value):
-        quarters = (value // 90) % 2
-        if quarters == 0:
+        quarters = (value // 90)
+        if quarters % 2 == 0 or quarters == 0:
             # print("flip")
             self.waypoint_latitude, self.waypoint_longtitude = \
                 - self.waypoint_longtitude, - self.waypoint_latitude
         else:
-            if value > 0:
-                # print("turn right")
+            # print(value, quarters)
+
+            if quarters == 1 or quarters == -3:
+                print("turn right")
                 self.waypoint_latitude, self.waypoint_longtitude = \
                     - self.waypoint_longtitude, self.waypoint_latitude
-            else:
-                # print("turn left")
+            if quarters == 3 or quarters == -1:
+                print("turn left")
                 self.waypoint_latitude, self.waypoint_longtitude = \
                     self.waypoint_longtitude, - self.waypoint_latitude
 

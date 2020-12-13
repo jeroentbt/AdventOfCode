@@ -61,24 +61,60 @@ def test_move_forward_starting_direction():
     assert 10 == b.latitude
 
 
-# def test_navigating():
-#     input = ("F10\n"
-#              "N3\n"
-#              "F7\n"
-#              "R90\n"
-#              "F11")
-#     b = Boat()
-#     b.navigate(read_nav(input))
-#     assert 17 == abs(b.longtitude)
-#     assert 8 == abs(b.latitude)
+def test_navigating():
+    input = ("F10\n"
+             "N3\n"
+             "F7\n"
+             "R90\n"
+             "F11")
+    b = Boat()
+    b.navigate(read_nav(input))
+    assert 214 == abs(b.longtitude)
+    assert 72 == abs(b.latitude)
 
 
-# def test_manhattan_distamce():
-#     input = ("F10\n"
-#              "N3\n"
-#              "F7\n"
-#              "R90\n"
-#              "F11")
-#     b = Boat()
-#     b.navigate(read_nav(input))
-#     assert 25 == b.manhattan()
+def test_manhattan_distamce():
+    input = ("F10\n"
+             "N3\n"
+             "F7\n"
+             "R90\n"
+             "F11")
+    b = Boat()
+    b.navigate(read_nav(input))
+    assert 286 == b.manhattan()
+
+
+def test_navigating_2():
+    input = ("F10\n"
+             "N3\n"
+             "F7\n"
+             "L270\n"
+             "F11")
+    b = Boat()
+    b.navigate(read_nav(input))
+    assert 214 == abs(b.longtitude)
+    assert 72 == abs(b.latitude)
+
+
+def test_navigating_real_left():
+    input = ("F10\n"
+             "N3\n"
+             "F7\n"
+             "L90\n"
+             "F11")
+    b = Boat()
+    b.navigate(read_nav(input))
+    assert 126 == abs(b.longtitude)
+    assert 148 == abs(b.latitude)
+
+
+def test_navigating_overturned_left():
+    input = ("F10\n"
+             "N3\n"
+             "F7\n"
+             "R270\n"
+             "F11")
+    b = Boat()
+    b.navigate(read_nav(input))
+    assert 126 == abs(b.longtitude)
+    assert 148 == abs(b.latitude)
