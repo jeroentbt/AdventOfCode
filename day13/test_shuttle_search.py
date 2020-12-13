@@ -1,5 +1,5 @@
 from shuttle_search import earliest_departure_in, earliest_departure, \
-    solution_part_1
+    solution_part_1, earliest_schedule
 
 
 def test_earliest_departure_time_for_one_line():
@@ -36,3 +36,8 @@ def test_solution_part_1():
     earliest_timestamp = 939
     bus_ids = [7, 13, 'x', 'x', 59, 'x', 31, 19]
     assert 295 == solution_part_1(bus_ids, earliest_timestamp)
+
+
+def test_earliest_schedule():
+    bus_ids = [7, 13]
+    assert 77 == earliest_schedule(bus_ids)
