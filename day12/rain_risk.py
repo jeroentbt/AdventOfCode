@@ -1,19 +1,20 @@
 class Boat():
     def __init__(self):
-        self.facing = 90
+        self.waypoint_latitude = 1
+        self.waypoint_longtitude = 10
         self.latitude = 0  # N-S
         self.longtitude = 0  # E-W
 
     def move(self, instruction):
         action, value = instruction
         if action == "N":
-            self.latitude += value
+            self.waypoint_latitude += value
         if action == "S":
-            self.latitude -= value
+            self.waypoint_latitude -= value
         if action == "E":
-            self.longtitude += value
+            self.waypoint_longtitude += value
         if action == "W":
-            self.longtitude -= value
+            self.waypoint_longtitude -= value
         if action == "R":
             self.facing = (self.facing + value) % 360
         if action == "L":
