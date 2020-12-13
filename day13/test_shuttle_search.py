@@ -11,3 +11,9 @@ def test_earliest_departure_of_two_lines():
     earliest_timestamp = 939
     bus_ids = [7, 13]
     assert (7, 6) == earliest_departure(bus_ids, earliest_timestamp)
+
+
+def test_earliest_departure_of_3_lines():
+    earliest_timestamp = 939
+    bus_ids = [7, 13, 59]
+    assert (59, 5) == earliest_departure(bus_ids, earliest_timestamp)
