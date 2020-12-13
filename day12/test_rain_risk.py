@@ -82,3 +82,15 @@ def test_move_forward_after_turning_180():
     b.move(("L", 180))
     b.move(("F", 10))
     assert -10 == b.longtitude
+
+
+def test_navigating():
+    input = ("F10\n"
+             "N3\n"
+             "F7\n"
+             "R90\n"
+             "F11")
+    b = Boat()
+    b.navigate(read_nav(input))
+    assert 17 == abs(b.longtitude)
+    assert 8 == abs(b.latitude)

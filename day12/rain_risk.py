@@ -19,7 +19,8 @@ class Boat():
         if action == "L":
             self.facing = (self.facing - value) % 360
         if action == "F":
-            self.forward(10)
+            self.forward(value)
+        # print(self.longtitude, self.latitude)
 
     def forward(self, value):
         directions = ["N", "E", "S", "W"]
@@ -31,9 +32,14 @@ class Boat():
         if deviation == 0:
             self.move((general_direction, value))
 
+    def navigate(self, instructions):
+        for instruction in instructions:
+            print("-" * 20)
+            self.move(instruction)
 
-
-
+    def __str__(self):
+        return f"latitude (N-S):  {self.latitude}\n \
+                longtitude (E-W): {self.longtitude}"
 
 
 def read_nav(nav_txt):
