@@ -1,7 +1,13 @@
-from shuttle_search import earliest_departure
+from shuttle_search import earliest_departure_in, earliest_departure
 
 
-def test_earliest_departure_time():
+def test_earliest_departure_time_for_one_line():
     earliest_timestamp = 939
     bus_id = 7
-    assert 945 == earliest_departure(bus_id, earliest_timestamp)
+    assert (7, 6) == earliest_departure_in(bus_id, earliest_timestamp)
+
+
+def test_earliest_departure_of_two_lines():
+    earliest_timestamp = 939
+    bus_ids = [7, 13]
+    assert (7, 6) == earliest_departure(bus_ids, earliest_timestamp)
