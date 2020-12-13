@@ -40,48 +40,25 @@ def test_move_west():
     assert 5 == b.waypoint_longtitude
 
 
-# def test_turn_right():
-#     b = Boat()
-#     b.move(("R", 90))
-#     assert 180 == b.facing
+def test_turn_right():
+    b = Boat()
+    b.move(("R", 90))
+    assert -10 == b.waypoint_latitude
+    assert 1 == b.waypoint_longtitude
 
 
-# def test_turn_left():
-#     b = Boat()
-#     b.move(("L", 100))
-#     assert 350 == b.facing
+def test_turn_left():
+    b = Boat()
+    b.move(("L", 90))
+    assert 10 == b.waypoint_latitude
+    assert -1 == b.waypoint_longtitude
 
 
-# def test_turn_beyond_360():
-#     b = Boat()
-#     b.move(("R", 280))
-#     assert 10 == b.facing
-
-
-# def test_turn_back_beyond_360():
-#     b = Boat()
-#     b.move(("L", 100))
-#     assert 350 == b.facing
-
-
-# def test_turn_back_beyond_360_2():
-#     b = Boat()
-#     b.move(("L", 100))
-#     b.move(("L", 90))
-#     assert 260 == b.facing
-
-
-# def test_move_forward_starting_direction():
-#     b = Boat()
-#     b.move(("F", 10))
-#     assert 10 == b.longtitude
-
-
-# def test_move_forward_after_turning_180():
-#     b = Boat()
-#     b.move(("L", 180))
-#     b.move(("F", 10))
-#     assert -10 == b.longtitude
+def test_move_forward_starting_direction():
+    b = Boat()
+    b.move(("F", 10))
+    assert 100 == b.longtitude
+    assert 10 == b.latitude
 
 
 # def test_navigating():
