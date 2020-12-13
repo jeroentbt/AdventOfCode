@@ -118,3 +118,15 @@ def test_navigating_overturned_left():
     b.navigate(read_nav(input))
     assert 126 == abs(b.longtitude)
     assert 148 == abs(b.latitude)
+
+
+def test_navigating_back():
+    input = ("F10\n"
+             "N3\n"
+             "F7\n"
+             "R180\n"
+             "F11")
+    b = Boat()
+    b.navigate(read_nav(input))
+    assert 60 == abs(b.longtitude)
+    assert 6 == abs(b.latitude)
