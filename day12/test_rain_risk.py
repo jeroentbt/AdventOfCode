@@ -94,3 +94,14 @@ def test_navigating():
     b.navigate(read_nav(input))
     assert 17 == abs(b.longtitude)
     assert 8 == abs(b.latitude)
+
+
+def test_manhattan_distamce():
+    input = ("F10\n"
+             "N3\n"
+             "F7\n"
+             "R90\n"
+             "F11")
+    b = Boat()
+    b.navigate(read_nav(input))
+    assert 25 == b.manhattan()

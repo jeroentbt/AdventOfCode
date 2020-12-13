@@ -37,6 +37,9 @@ class Boat():
             print("-" * 20)
             self.move(instruction)
 
+    def manhattan(self):
+        return abs(self.longtitude) + abs(self.latitude)
+
     def __str__(self):
         return f"latitude (N-S):  {self.latitude}\n \
                 longtitude (E-W): {self.longtitude}"
