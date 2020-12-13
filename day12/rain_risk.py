@@ -26,15 +26,15 @@ class Boat():
         directions = ["N", "E", "S", "W"]
         general_direction = directions[self.facing//90]
         deviation = self.facing % 90
-        print(general_direction)
-        print(deviation)
+        # print(general_direction)
+        # print(deviation)
 
         if deviation == 0:
             self.move((general_direction, value))
 
     def navigate(self, instructions):
         for instruction in instructions:
-            print("-" * 20)
+            # print("-" * 20)
             self.move(instruction)
 
     def manhattan(self):
@@ -47,3 +47,10 @@ class Boat():
 
 def read_nav(nav_txt):
     return [(str(line[:1]), int(line[1:])) for line in nav_txt.splitlines()]
+
+
+if __name__ == "__main__":
+    with open("input.txt") as nav_txt:
+        b = Boat()
+        b.navigate(read_nav(nav_txt.read()))
+        print(b.manhattan())
