@@ -27,4 +27,9 @@ def apply_bitmasks(input):
 
 
 def sum_of_masked(mem):
-    pass
+    return sum([v for k, v in mem.items()])
+
+
+if __name__ == "__main__":
+    with open("input.txt") as program:
+        print(sum_of_masked(apply_bitmasks(program.read())))
