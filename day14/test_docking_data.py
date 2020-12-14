@@ -13,3 +13,13 @@ def test_read_one_block_one_other_number():
              "mem[7] = 101\n")
     mem = apply_bitmasks(input)
     assert 101 == mem[7]
+
+
+def test_read_one_block():
+    input = ("mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X\n"
+             "mem[8] = 11\n"
+             "mem[7] = 101\n"
+             "mem[8] = 0\n")
+    mem = apply_bitmasks(input)
+    assert 101 == mem[7]
+    assert 64 == mem[8]
