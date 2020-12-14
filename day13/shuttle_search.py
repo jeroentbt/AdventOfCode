@@ -22,17 +22,26 @@ def solution_part_1(bus_ids, earliest_timestamp):
 
 
 def earliest_schedule(bus_ids):
-    # x * 7 = (y * 13) + 1
-    x = bus_ids[0]
-    y = bus_ids[1]
-    biggest = max(bus_ids)
+    iterable = iter(bus_ids)
+    x = next(x for x in iterable if isinstance(x, int))
+    print(x)
+    y = next(x for x in iterable if isinstance(x, int))
+    print(y)
+    biggest = max([x, y])
+    gap = bus_ids.index(y) - bus_ids.index(x)
+    print(gap)
 
     while(True):
-        if ((biggest % x == 0) and ((biggest + 1) % y == 0)):
+        if ((biggest % x == 0) and ((biggest + (1 * gap)) % y == 0)):
             lcm = biggest
             break
         biggest += 1
+    print(lcm)
     return lcm
+
+
+
+
 
 
 if __name__ == "__main__":
@@ -41,3 +50,17 @@ if __name__ == "__main__":
         earliest_timestamp = int(schedule[0])
         bus_ids = schedule[1].strip().split(',')
         print(solution_part_1(bus_ids, earliest_timestamp))
+    # stopen
+    data = open('input.txt', 'r').read().split('\n')
+    data = data[1].split(',')
+    B = [(int(data[k]), k) for k in range(len(data)) if data[k] != 'x']
+
+    lcm = 1
+    time = 0
+    for i in range(len(B)-1):
+        bus_id = B[i+1][0]
+        idx = B[i+1][1]
+        lcm *= B[i][0]
+        while (time + idx) % bus_id != 0:
+            time += lcm
+    print(time)

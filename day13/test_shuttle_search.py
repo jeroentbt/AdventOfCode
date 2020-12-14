@@ -41,3 +41,14 @@ def test_solution_part_1():
 def test_earliest_schedule():
     bus_ids = [7, 13]
     assert 77 == earliest_schedule(bus_ids)
+
+
+def test_earliest_schedule_2_busses_gap():
+    bus_ids = [7, 'x', 13]
+    assert 63 == earliest_schedule(bus_ids)
+
+
+def test_earliest_schedule_3_busses_gap():
+    bus_ids = [17, 'x', 13, 19]
+    # bus_ids = [102, 19]
+    assert 3417 == earliest_schedule(bus_ids)
