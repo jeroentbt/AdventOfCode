@@ -1,4 +1,4 @@
-from docking_data import apply_bitmasks
+from docking_data import apply_bitmasks, sum_of_masked
 
 
 def test_read_one_block_one_number():
@@ -23,3 +23,9 @@ def test_read_one_block():
     mem = apply_bitmasks(input)
     assert 101 == mem[7]
     assert 64 == mem[8]
+
+
+def test_return_sum():
+    mem = {7: 101,
+             8: 64}
+    assert 165 == sum_of_masked(mem)

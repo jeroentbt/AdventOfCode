@@ -8,13 +8,13 @@ def apply_bitmasks(input):
         memline = re.match(r'^mem\[(\d+)\] = (\d+)', line)
         if maskline:
             mask = maskline.group(1)
-            print(mask)
+            # print(mask)
         if memline:
             address = memline.group(1)
             number = int(memline.group(2))
             number_bin = bin(number)[2:].zfill(36)
-            print(address)
-            print(number)
+            # print(address)
+            # print(number)
 
             masked_number = []
             for i, n in enumerate(mask):
@@ -24,3 +24,7 @@ def apply_bitmasks(input):
                     masked_number.append(n)
             mem[int(address)] = int(''.join(masked_number), 2)
     return mem
+
+
+def sum_of_masked(mem):
+    pass
