@@ -1,2 +1,2 @@
 def play_turns(turns, input):
-    return 0
+    return input[turns -1]
