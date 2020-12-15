@@ -10,7 +10,8 @@ def play_turns(turns, starting_numbers):
         else:
             spoken, when = numbers[i-1]
             if len(when) == 1:
-                return 0
+                speak = 0
+                numbers.append((speak, [when, [i+1]]))
         last_number = speak
         print(last_number)
     return last_number
