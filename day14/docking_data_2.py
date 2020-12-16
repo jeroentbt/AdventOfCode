@@ -29,7 +29,6 @@ def apply_bitmasks(input):
             print(all_addresses)
             for a in all_addresses:
                 mem = write(a, number, mem)
-3
     return mem
 
 
