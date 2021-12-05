@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 def read_coordinates(input):
     return [tuple([tuple([int(x) for x in x_comma_y.split(',')])
                    for x_comma_y in line.split(' -> ')])
@@ -16,6 +19,10 @@ def line_for_coordinates(c):
         for y in range(min(a[1], b[1]), max(a[1], b[1]) + 1):
             line.append((x, y))
     return line
+
+
+def list_overlaps(coordinates):
+    return [point for point, count in Counter(coordinates).items() if count > 1]
 
 
 if __name__ == "__main__":

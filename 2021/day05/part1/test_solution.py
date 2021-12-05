@@ -1,5 +1,5 @@
 from solution import read_coordinates, \
-    line_for_coordinates
+    line_for_coordinates, list_overlaps
 
 
 def test_read_coordinates_for_2_lines():
@@ -26,6 +26,12 @@ def test_set_points_of_reversed_horizontal_line():
     input = ((4, 0), (0, 0))
     expected = [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0)]
     assert expected == line_for_coordinates(input)
+
+
+def test_find_single_overlap():
+    input = [(0, 0), (0, 0), (1, 0)]
+    expected = [(0, 0)]
+    assert expected == list_overlaps(input)
 
 
 # def test_example():
