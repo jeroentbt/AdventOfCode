@@ -1,4 +1,4 @@
-from solution import prep_input, win_bingo, mark_board, board_wins, lose_bingo
+from solution import prep_input, win_bingo, mark_number_on_board, board_wins, lose_bingo
 
 
 def test_prep_input():
@@ -21,7 +21,7 @@ def test_mark_board():
     board = [[(1, 0), (2, 0)],
              [(3, 0), (4, 0)]]
     assert [[(1, 1), (2, 0)],
-            [(3, 0), (4, 0)]] == mark_board(1, board)
+            [(3, 0), (4, 0)]] == mark_number_on_board(1, board)
 
 
 def test_check_for_win_should_fail():
