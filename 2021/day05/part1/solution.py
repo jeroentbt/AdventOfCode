@@ -34,4 +34,4 @@ def number_of_overlapping_vents(input):
 
 if __name__ == "__main__":
     with open("../input.txt") as input:
-        input = input.read()
+        print(number_of_overlapping_vents(input.read()))
