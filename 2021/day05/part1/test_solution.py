@@ -1,13 +1,7 @@
 from solution import read_coordinates
 
 
-def test_get_coordinates_for_1_horizontal_line():
-    input = "0,0 -> 1,0\n"
-    expected = ((0, 0), (1, 0))
-    assert expected == read_coordinates(input)[0]
-
-
-def test_get_coordinates_for_2_horizontal_lines():
+def test_read_coordinates_for_2_lines():
     input = "0,0 -> 1,0\n" \
         "3,0 -> 4,0\n"
     expected = [((0, 0), (1, 0)),
