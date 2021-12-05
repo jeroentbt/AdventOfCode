@@ -1,13 +1,7 @@
 def read_coordinates(input):
-    input = input.splitlines()
-    list_of_coordinates = []
-    for line in input:
-        c = tuple([tuple([int(x) for x in x_comma_y.split(',')])
-             for x_comma_y in line.split(' -> ')])
-
-        list_of_coordinates.append(c)
-
-    return list_of_coordinates
+    return [tuple([tuple([int(x) for x in x_comma_y.split(',')])
+                   for x_comma_y in line.split(' -> ')])
+            for line in input.splitlines()]
 
 
 if __name__ == "__main__":
