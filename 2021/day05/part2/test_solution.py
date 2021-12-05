@@ -25,7 +25,7 @@ def test_set_points_of_vertical_line():
 
 def test_set_points_of_reversed_horizontal_line():
     input = ((4, 0), (0, 0))
-    expected = [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0)]
+    expected = [(4, 0), (3, 0), (2, 0), (1, 0), (0, 0)]
     assert expected == line_for_coordinates(input)
 
 
@@ -43,7 +43,7 @@ def test_set_points_of_downward_diagonal_line():
 
 def test_set_points_of_upward_diagonal_line():
     input = ((4, 0), (0, 4))
-    expected = [(0, 4), (1, 3), (2, 2), (3, 1), (4, 0)]
+    expected = [(4, 0), (3, 1), (2, 2), (1, 3), (0, 4)]
     assert expected == line_for_coordinates(input)
 
 
