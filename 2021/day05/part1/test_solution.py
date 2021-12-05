@@ -22,6 +22,12 @@ def test_set_points_of_vertical_line():
     assert expected == line_for_coordinates(input)
 
 
+def test_set_points_of_reversed_horizontal_line():
+    input = ((4, 0), (0, 0))
+    expected = [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0)]
+    assert expected == line_for_coordinates(input)
+
+
 # def test_example():
 #     input = "0,9 -> 5,9\n" \
 #         "8,0 -> 0,8\n" \

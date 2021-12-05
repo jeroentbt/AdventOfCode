@@ -9,11 +9,11 @@ def line_for_coordinates(c):
     line = []
     if a[1] == b[1]:
         y = a[1]
-        for x in range(a[0], b[0] + 1):
+        for x in range(min(a[0], b[0]), max(a[0], b[0]) + 1):
             line.append((x, y))
     if a[0] == b[0]:
         x = a[0]
-        for y in range(a[1], b[1] + 1):
+        for y in range(min(a[1], b[1]), max(a[1], b[1]) + 1):
             line.append((x, y))
     return line
 
