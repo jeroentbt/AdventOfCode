@@ -25,6 +25,13 @@ def list_overlaps(coordinates):
     return [point for point, count in Counter(coordinates).items() if count > 1]
 
 
+def number_of_overlapping_vents(input):
+    points = []
+    for c in read_coordinates(input):
+        points += line_for_coordinates(c)
+    return(len(list_overlaps(points)))
+
+
 if __name__ == "__main__":
     with open("../input.txt") as input:
         input = input.read()
