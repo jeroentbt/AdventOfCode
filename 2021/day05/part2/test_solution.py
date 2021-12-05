@@ -35,6 +35,18 @@ def test_find_single_overlap():
     assert expected == list_overlaps(input)
 
 
+def test_set_points_of_downward_diagonal_line():
+    input = ((0, 0), (4, 4))
+    expected = [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4)]
+    assert expected == line_for_coordinates(input)
+
+
+def test_set_points_of_upward_diagonal_line():
+    input = ((4, 0), (0, 4))
+    expected = [(0, 4), (1, 3), (2, 2), (3, 1), (4, 0)]
+    assert expected == line_for_coordinates(input)
+
+
 def test_example():
     input = "0,9 -> 5,9\n" \
         "8,0 -> 0,8\n" \
