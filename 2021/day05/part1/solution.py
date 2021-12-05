@@ -7,8 +7,14 @@ def read_coordinates(input):
 def line_for_coordinates(c):
     a, b = c
     line = []
-    for x in range(a[0], b[0] + 1):
-        line.append((x, a[1]))
+    if a[1] == b[1]:
+        y = a[1]
+        for x in range(a[0], b[0] + 1):
+            line.append((x, y))
+    if a[0] == b[0]:
+        x = a[0]
+        for y in range(a[1], b[1] + 1):
+            line.append((x, y))
     return line
 
 
