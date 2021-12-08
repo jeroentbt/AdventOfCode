@@ -1,4 +1,4 @@
-from solution import part1
+from solution import count_known_digits
 
 
 full_example = \
@@ -29,10 +29,10 @@ example_one_line = \
 
 
 def test_part1_example():
-    assert 26 == part1(full_example)
+    assert 26 == count_known_digits(full_example)
 
 
 def test_part1_solution():
     with open("input.txt") as input:
         input = input.read()
-    assert 488 == part1(input)
+    assert 488 == count_known_digits(input)

@@ -1,10 +1,16 @@
-def known_digits_in(line):
-    return sum([1 for x in line.split('|')[1].split()
-                if len(x) in (2, 3, 4, 7)])
+def split_signal_and_output(line):
+    signal, output = line.split('|')
+    return signal.split(), output.split()
 
 
-def part1(input):
-    return sum(list(map(known_digits_in, input.splitlines())))
+def known_digits(line):
+    signal, output = split_signal_and_output(line)
+    return sum([1 for digit in output
+                if len(digit) in (2, 3, 4, 7)])
+
+
+def count_known_digits(input):
+    return sum(list(map(known_digits, input.splitlines())))
 
 
 if __name__ == "__main__":
