@@ -3,14 +3,26 @@ def split_signal_and_output(line):
     return signal.split(), output.split()
 
 
-def known_digits(line):
-    signal, output = split_signal_and_output(line)
-    return sum([1 for digit in output
-                if len(digit) in (2, 3, 4, 7)])
+def known_digits(input):
+    known_digits = []
+    for digit in input:
+        if len(digit) == 2:
+            known_digits. append({1, digit})
+        if len(digit) == 3:
+            known_digits. append({7, digit})
+        if len(digit) == 4:
+            known_digits. append({4, digit})
+        if len(digit) == 7:
+            known_digits. append({8, digit})
+    return known_digits
 
 
 def count_known_digits(input):
-    return sum(list(map(known_digits, input.splitlines())))
+    count = 0
+    for line in input.splitlines():
+        signal, output = split_signal_and_output(line)
+        count += len(known_digits(output))
+    return count
 
 
 if __name__ == "__main__":
