@@ -51,6 +51,22 @@ def determine_digits_with_6_segments(signal, known):
     return found_digits
 
 
+def determine_digits_with_5_segments(signal, known):
+    # 3 digits have 5 segments: 2, 3, 5
+    found_digits = {}
+    for digit in [set(x) for x in signal if len(x) == 5]:
+        # 3 is the only one that has all segments of 1
+        if known[1].issubset(digit):
+            found_digits[3] = digit
+        # 5 contains only segments of 6
+        elif known[6].issuperset(digit):
+            found_digits[5] = digit
+        # 2 is left
+        else:
+            found_digits[2] = digit
+    return found_digits
+
+
 if __name__ == "__main__":
     with open("input.txt") as input:
         input = input.read()
