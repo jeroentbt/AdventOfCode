@@ -6,6 +6,7 @@ def split_signal_and_output(line):
 def known_digits(input):
     known_digits = {}
     for digit in input:
+        digit = set(digit)
         if len(digit) == 2:
             known_digits[1] = digit
         if len(digit) == 3:
@@ -31,25 +32,23 @@ def read_display(input):
         signal, output = split_signal_and_output(line)
         known = known_digits(signal)
         known[9] = find_9(signal, known)
-
-
     return 0
 
 
 def find_9(signal, known):
     # 3 digits have 6 segments: 0, 6, 9
     # 9 is the only one that has all segments of 4
-    for digit in [x for x in signal if len(x) == 6]:
-        if len(set(known[4]).difference(set(digit))) == 0:
+    for digit in [set(x) for x in signal if len(x) == 6]:
+        if known[4].issubset(digit):
             return digit
 
 
 def find_0(signal, known):
     # 3 digits have 6 segments: 0, 6, 9
     # 0 is the only one that has all segments of 1
-    for digit in [x for x in signal if len(x) == 6]:
-        if set(known[1]).issubset(set(digit)) and \
-           set(known[9]) != set(digit):
+    for digit in [set(x) for x in signal if len(x) == 6]:
+        if known[1].issubset(digit) and \
+           known[9] != digit:
             return digit
 
 
