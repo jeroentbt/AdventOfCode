@@ -27,12 +27,18 @@ def count_known_digits(input):
     return count
 
 
-def read_display(input):
+def dict_for_digits(input):
     for line in input.splitlines():
         signal, output = split_signal_and_output(line)
         known = known_digits(signal)
-        known[9] = find_9(signal, known)
-    return 0
+        known.update(determine_digits_with_6_segments(signal, known))
+        known.update(determine_digits_with_5_segments(signal, known))
+    return known
+
+
+def read_display(input):
+    pass
+
 
 
 def determine_digits_with_6_segments(signal, known):

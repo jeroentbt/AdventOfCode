@@ -1,6 +1,6 @@
 from solution import count_known_digits, read_display, \
     determine_digits_with_6_segments, \
-    determine_digits_with_5_segments
+    determine_digits_with_5_segments, dict_for_digits
 
 
 full_example = \
@@ -92,3 +92,17 @@ def test_find_2():
 
 def test_find_5():
     assert set('abdfg') == determine_digits_with_5_segments(digits, known)[5]
+
+
+def test_building_translation_for_all_numbers():
+    assert {8: set('acedgfb'),
+            5: set('cdfbe'),
+            2: set('gcdfa'),
+            3: set('fbcad'),
+            7: set('dab'),
+            9: set('cefabd'),
+            6: set('cdfgeb'),
+            4: set('eafb'),
+            0: set('cagedb'),
+            1: set('ab')
+            } == dict_for_digits(example_one_line)
