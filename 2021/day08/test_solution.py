@@ -95,6 +95,7 @@ def test_find_5():
 
 
 def test_building_translation_for_all_numbers():
+    example_one_line_signal, _ = example_one_line.split('|')
     assert {8: set('acedgfb'),
             5: set('cdfbe'),
             2: set('gcdfa'),
@@ -105,4 +106,4 @@ def test_building_translation_for_all_numbers():
             4: set('eafb'),
             0: set('cagedb'),
             1: set('ab')
-            } == dict_for_digits(example_one_line)
+            } == dict_for_digits(example_one_line_signal.split())

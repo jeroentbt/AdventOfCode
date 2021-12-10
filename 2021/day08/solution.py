@@ -27,17 +27,25 @@ def count_known_digits(input):
     return count
 
 
-def dict_for_digits(input):
-    for line in input.splitlines():
-        signal, output = split_signal_and_output(line)
-        known = known_digits(signal)
-        known.update(determine_digits_with_6_segments(signal, known))
-        known.update(determine_digits_with_5_segments(signal, known))
+def dict_for_digits(signal):
+    known = known_digits(signal)
+    known.update(determine_digits_with_6_segments(signal, known))
+    known.update(determine_digits_with_5_segments(signal, known))
     return known
 
 
 def read_display(input):
-    pass
+    signal, output = split_signal_and_output(input)
+    the_dict = dict_for_digits(signal)
+    display = ''
+    for digit in output:
+        for key, value in the_dict.items():
+            if set(digit) == value:
+                display += str(key)
+    return int(display)
+
+
+
 
 
 
