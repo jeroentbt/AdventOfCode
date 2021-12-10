@@ -111,3 +111,9 @@ def test_building_translation_for_all_numbers():
 
 def test_full_example_part_2():
     assert 61229 == part2(full_example)
+
+
+def test_part2_solution():
+    with open("input.txt") as input:
+        input = input.read()
+    assert 1040429 == part2(input)
