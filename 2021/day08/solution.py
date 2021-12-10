@@ -35,21 +35,20 @@ def read_display(input):
     return 0
 
 
-def find_9(signal, known):
+def determine_digits_with_6_segments(signal, known):
     # 3 digits have 6 segments: 0, 6, 9
-    # 9 is the only one that has all segments of 4
+    found_digits = {}
     for digit in [set(x) for x in signal if len(x) == 6]:
+        # 9 is the only one that has all segments of 4
         if known[4].issubset(digit):
-            return digit
-
-
-def find_0(signal, known):
-    # 3 digits have 6 segments: 0, 6, 9
-    # 0 is the only one that has all segments of 1
-    for digit in [set(x) for x in signal if len(x) == 6]:
-        if known[1].issubset(digit) and \
-           known[9] != digit:
-            return digit
+            found_digits[9] = digit
+        # 0 is the only one that has all segments of 1
+        elif known[1].issubset(digit):
+            found_digits[0] = digit
+        # 6 is left
+        else:
+            found_digits[6] = digit
+    return found_digits
 
 
 if __name__ == "__main__":

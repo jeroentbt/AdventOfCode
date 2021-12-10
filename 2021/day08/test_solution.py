@@ -1,4 +1,5 @@
-from solution import count_known_digits, read_display, find_9, find_0
+from solution import count_known_digits, read_display, \
+    determine_digits_with_6_segments
 
 
 full_example = \
@@ -43,7 +44,7 @@ def test_reading_1_display():
 
 
 digits = [
-     'abcefg',    # 0
+     'abcefg',   # 0 # found
      'cf',       # 1 # known
      'acdeg',    # 2
      'acdfg',    # 3
@@ -69,8 +70,12 @@ known = {
 
 
 def test_find_9():
-    assert set('abcdfg') == find_9(digits, known)
+    assert set('abcdfg') == determine_digits_with_6_segments(digits, known)[9]
 
 
 def test_find_0():
-    assert set('abcefg') == find_0(digits, known)
+    assert set('abcefg') == determine_digits_with_6_segments(digits, known)[0]
+
+
+def test_find_6():
+    assert set('abdefg') == determine_digits_with_6_segments(digits, known)[6]
