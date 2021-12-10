@@ -45,10 +45,6 @@ def read_display(input):
     return int(display)
 
 
-
-
-
-
 def determine_digits_with_6_segments(signal, known):
     # 3 digits have 6 segments: 0, 6, 9
     found_digits = {}
@@ -80,6 +76,12 @@ def determine_digits_with_5_segments(signal, known):
             found_digits[2] = digit
     return found_digits
 
+
+def part2(input):
+    total = 0
+    for line in input.splitlines():
+        total += read_display(line)
+    return total
 
 if __name__ == "__main__":
     with open("input.txt") as input:

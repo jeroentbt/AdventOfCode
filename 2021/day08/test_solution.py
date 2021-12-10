@@ -1,6 +1,6 @@
 from solution import count_known_digits, read_display, \
     determine_digits_with_6_segments, \
-    determine_digits_with_5_segments, dict_for_digits
+    determine_digits_with_5_segments, dict_for_digits, part2
 
 
 full_example = \
@@ -107,3 +107,7 @@ def test_building_translation_for_all_numbers():
             0: set('cagedb'),
             1: set('ab')
             } == dict_for_digits(example_one_line_signal.split())
+
+
+def test_full_example_part_2():
+    assert 61229 == part2(full_example)
