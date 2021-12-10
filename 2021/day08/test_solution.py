@@ -1,4 +1,4 @@
-from solution import count_known_digits
+from solution import count_known_digits, read_display, find_9
 
 
 full_example = \
@@ -36,3 +36,37 @@ def test_part1_solution():
     with open("input.txt") as input:
         input = input.read()
     assert 488 == count_known_digits(input)
+
+
+def test_reading_1_display():
+    assert 5353 == read_display(example_one_line)
+
+
+digits = [
+     'abcefg'    # 0
+     'cf',       # 1
+     'acdeg',    # 2
+     'acdfg',    # 3
+     'bcdf',     # 4
+     'abdfg',    # 5
+     'abdefg',   # 6
+     'acf',      # 7
+     'abcdefg',  # 8
+     'abcdfg']   # 9
+
+
+known = {
+    0: 'abcefg',
+    1: 'cf',
+    2: 'acdeg',
+    3: 'acdfg',
+    4: 'bcdf',
+    5: 'abdfg',
+    6: 'abdefg',
+    7: 'acf',
+    8: 'abcdefg',
+    9: 'abcdfg'}
+
+
+def test_find_9():
+    assert 'abcdfg' == find_9(digits, known)
