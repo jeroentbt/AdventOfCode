@@ -1,4 +1,4 @@
-from solution import count_known_digits, read_display, find_9
+from solution import count_known_digits, read_display, find_9, find_0
 
 
 full_example = \
@@ -43,16 +43,16 @@ def test_reading_1_display():
 
 
 digits = [
-     'abcefg'    # 0
-     'cf',       # 1
+     'abcefg',    # 0
+     'cf',       # 1 # known
      'acdeg',    # 2
      'acdfg',    # 3
-     'bcdf',     # 4
+     'bcdf',     # 4 # known
      'abdfg',    # 5
      'abdefg',   # 6
-     'acf',      # 7
-     'abcdefg',  # 8
-     'abcdfg']   # 9
+     'acf',      # 7 # known
+     'abcdefg',  # 8 # known
+     'abcdfg']   # 9 # found
 
 
 known = {
@@ -70,3 +70,7 @@ known = {
 
 def test_find_9():
     assert 'abcdfg' == find_9(digits, known)
+
+
+def test_find_0():
+    assert 'abcefg' == find_0(digits, known)

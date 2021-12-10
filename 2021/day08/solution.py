@@ -32,17 +32,25 @@ def read_display(input):
         known = known_digits(signal)
         known[9] = find_9(signal, known)
 
+
     return 0
 
 
 def find_9(signal, known):
-    # 3 digets have 6 segments: 0, 6, 9
-    # 9 is the only one that has no segments of 4
-
+    # 3 digits have 6 segments: 0, 6, 9
+    # 9 is the only one that has all segments of 4
     for digit in [x for x in signal if len(x) == 6]:
         if len(set(known[4]).difference(set(digit))) == 0:
             return digit
 
+
+def find_0(signal, known):
+    # 3 digits have 6 segments: 0, 6, 9
+    # 0 is the only one that has all segments of 1
+    for digit in [x for x in signal if len(x) == 6]:
+        if set(known[1]).issubset(set(digit)) and \
+           set(known[9]) != set(digit):
+            return digit
 
 
 if __name__ == "__main__":
