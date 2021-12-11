@@ -63,14 +63,9 @@ class Cave():
     def set_low_points(self):
         for point in self.points:
             neighbours = []
-            if point.neighbours['left']:
-                neighbours.append(point.neighbours['left'].height)
-            if point.neighbours['right']:
-                neighbours.append(point.neighbours['right'].height)
-            if point.neighbours['up']:
-                neighbours.append(point.neighbours['up'].height)
-            if point.neighbours['down']:
-                neighbours.append(point.neighbours['down'].height)
+            for _, n in point.neighbours.items():
+                if n:
+                    neighbours.append(n.height)
             print(neighbours)
             if min(neighbours) > point.height:
                 point.lowest = True
