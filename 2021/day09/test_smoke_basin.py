@@ -33,7 +33,7 @@ def test_part1_example_risk():
     assert 15 == sum_of_risk(heightmap)
 
 
-def test_part2_solution():
+def test_part1_solution():
     with open("input.txt") as input:
         input = input.read()
     assert 524 == sum_of_risk(input)
@@ -67,3 +67,9 @@ def test_part2_example_solution():
         "8767896789\n" \
         "9899965678"
     assert 1134 == solution_part_2(heightmap)
+
+
+def test_part2_solution():
+    with open("input.txt") as input:
+        input = input.read()
+    assert 1235430 == solution_part_2(input)
