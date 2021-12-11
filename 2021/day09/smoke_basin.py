@@ -52,13 +52,17 @@ class Cave():
             row_offset = (point.y * (self.max_x + 1))
 
             if point.x > 0:
-                point.neighbours['left'] = self.points[point.x - 1 + row_offset]
+                point.neighbours['left'] = \
+                    self.points[point.x - 1 + row_offset]
             if point.x < self.max_x:
-                point.neighbours['right'] = self.points[point.x + 1 + row_offset]
+                point.neighbours['right'] = \
+                    self.points[point.x + 1 + row_offset]
             if point.y > 0:
-                point.neighbours['up'] = self.points[point.x - self.max_x - 1 + row_offset]
+                point.neighbours['up'] = \
+                    self.points[point.x - self.max_x - 1 + row_offset]
             if point.y < self.max_y:
-                point.neighbours['down'] = self.points[point.x + self.max_x + 1 + row_offset]
+                point.neighbours['down'] = \
+                    self.points[point.x + self.max_x + 1 + row_offset]
 
     def set_low_points(self):
         for point in self.points:
@@ -66,11 +70,9 @@ class Cave():
             for _, n in point.neighbours.items():
                 if n:
                     neighbours.append(n.height)
-            print(neighbours)
             if min(neighbours) > point.height:
                 point.lowest = True
                 point.risk = 1 + point.height
-            print(point)
 
 
 def low_points(heightmap):
