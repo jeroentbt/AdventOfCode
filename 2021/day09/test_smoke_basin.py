@@ -1,4 +1,4 @@
-from smoke_basin import low_points, sum_of_risk, basins
+from smoke_basin import low_points, sum_of_risk, basins, solution_part_2
 
 
 def test_find_two_lowest_points_on_horizontal():
@@ -42,3 +42,28 @@ def test_part2_solution():
 def test_find_1_basin_on_horizontal():
     heightmap = "98719"
     assert 1 == len(basins(heightmap))
+
+
+def test_find_size_of_1_basin_on_horizontal():
+    heightmap = "98719"
+    assert 3 == len(basins(heightmap)[0])
+
+
+def test_part2_example_basins():
+    heightmap = \
+        "2199943210\n" \
+        "3987894921\n" \
+        "9856789892\n" \
+        "8767896789\n" \
+        "9899965678"
+    assert 4 == len(basins(heightmap))
+
+
+def test_part2_example_solution():
+    heightmap = \
+        "2199943210\n" \
+        "3987894921\n" \
+        "9856789892\n" \
+        "8767896789\n" \
+        "9899965678"
+    assert 1134 == solution_part_2(heightmap)

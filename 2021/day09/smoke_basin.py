@@ -33,6 +33,7 @@ class Cave():
         self.set_neighbours_for_points()
         self.set_low_points()
         self.basins = []
+        self.get_basins()
 
     def read_map(self, heightmap):
         self.points = []
@@ -78,31 +79,24 @@ class Cave():
             for point in [point for point in self.points
                           if point.height == h
                           and point.basin < 0]:
-                basin = set()
-                basin.add(point)
-                self.basins.append(self.define_basin
-                                   (basin,
-                                    [n for n in point.neighbours.values()
-                                     if n is not False]))
 
-    def define_basin(self, basin, neighbours):
+                self.define_basin([n for n in point.neighbours.values()
+                                   if n is not False], basin=[])
+
+    def define_basin(self, neighbours, basin):
         n = neighbours.pop()
-        print("n:", n)
         if n.height < 9:
             n.basin = len(self.basins)
             neighbours += [point for point in n.neighbours.values()
                            if point is not False and
                            point.basin < 0 and
                            point.height < 9]
-            basin.add(n)
+            basin.append(n)
         if len(neighbours) == 0:
+            self.basins.append(list(set(basin)))
             return basin
         else:
-            print(basin)
-            print(neighbours)
-            print('#' * 120)
-            self.define_basin(basin, neighbours)
-
+            self.define_basin(neighbours, basin)
 
 
 def low_points(heightmap):
@@ -117,5 +111,14 @@ def sum_of_risk(heightmap):
 
 def basins(heightmap):
     cave = Cave(heightmap)
-    cave.get_basins()
     return cave.basins
+
+
+def solution_part_2(heightmap):
+    cave = Cave(heightmap)
+    three_largest_basins = sorted([len(basin) for basin in cave.basins],
+                                  reverse=True)[0:3]
+    product = 1
+    for size in three_largest_basins:
+        product *= size
+    return product
