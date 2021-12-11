@@ -8,6 +8,7 @@ class Point():
         self.neighbour_up = False
         self.neighbour_down = False
         self.lowest = False
+        self.risk = 0
 
     def __str__(self):
         return \
@@ -74,10 +75,15 @@ class Cave():
             print(neighbours)
             if min(neighbours) > point.height:
                 point.lowest = True
-
+                point.risk = 1 + point.height
             print(point)
 
 
 def low_points(heightmap):
     cave = Cave(heightmap)
     return [point for point in cave.points if point.lowest]
+
+
+def sum_of_risk(heightmap):
+    cave = Cave(heightmap)
+    return sum([point.risk for point in cave.points])

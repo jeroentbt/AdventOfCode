@@ -1,4 +1,4 @@
-from smoke_basin import low_points
+from smoke_basin import low_points, sum_of_risk
 
 
 def test_find_two_lowest_points_on_horizontal():
@@ -21,3 +21,19 @@ def test_find_four_lowest_points_on_two_row_grid():
         "8767896789\n" \
         "9899965678"
     assert 4 == len(low_points(heightmap))
+
+
+def test_part1_example_risk():
+    heightmap = \
+        "2199943210\n" \
+        "3987894921\n" \
+        "9856789892\n" \
+        "8767896789\n" \
+        "9899965678"
+    assert 15 == sum_of_risk(heightmap)
+
+
+def test_part2_solution():
+    with open("input.txt") as input:
+        input = input.read()
+    assert 524 == sum_of_risk(input)
