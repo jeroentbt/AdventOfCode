@@ -1,4 +1,4 @@
-from smoke_basin import low_points, sum_of_risk
+from smoke_basin import low_points, sum_of_risk, basins
 
 
 def test_find_two_lowest_points_on_horizontal():
@@ -37,3 +37,8 @@ def test_part2_solution():
     with open("input.txt") as input:
         input = input.read()
     assert 524 == sum_of_risk(input)
+
+
+def test_find_1_basin_on_horizontal():
+    heightmap = "98719"
+    assert 1 == len(basins(heightmap))

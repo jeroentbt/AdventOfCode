@@ -9,6 +9,7 @@ class Point():
                            'down': False}
         self.lowest = False
         self.risk = 0
+        self.basin = -1
 
     def __str__(self):
         return \
@@ -31,15 +32,13 @@ class Cave():
         self.heightmap = self.read_map(heightmap)
         self.set_neighbours_for_points()
         self.set_low_points()
+        self.basins = []
 
     def read_map(self, heightmap):
         self.points = []
         lines = heightmap.splitlines()
         self.max_x = len(lines[0]) - 1
         self.max_y = len(lines) - 1
-
-        print(self.max_x)
-        print(self.max_y)
 
         for y, line in enumerate(lines):
             for x, height in enumerate(list(line)):
@@ -74,6 +73,37 @@ class Cave():
                 point.lowest = True
                 point.risk = 1 + point.height
 
+    def get_basins(self):
+        for h in range(9):
+            for point in [point for point in self.points
+                          if point.height == h
+                          and point.basin < 0]:
+                basin = set()
+                basin.add(point)
+                self.basins.append(self.define_basin
+                                   (basin,
+                                    [n for n in point.neighbours.values()
+                                     if n is not False]))
+
+    def define_basin(self, basin, neighbours):
+        n = neighbours.pop()
+        print("n:", n)
+        if n.height < 9:
+            n.basin = len(self.basins)
+            neighbours += [point for point in n.neighbours.values()
+                           if point is not False and
+                           point.basin < 0 and
+                           point.height < 9]
+            basin.add(n)
+        if len(neighbours) == 0:
+            return basin
+        else:
+            print(basin)
+            print(neighbours)
+            print('#' * 120)
+            self.define_basin(basin, neighbours)
+
+
 
 def low_points(heightmap):
     cave = Cave(heightmap)
@@ -83,3 +113,9 @@ def low_points(heightmap):
 def sum_of_risk(heightmap):
     cave = Cave(heightmap)
     return sum([point.risk for point in cave.points])
+
+
+def basins(heightmap):
+    cave = Cave(heightmap)
+    cave.get_basins()
+    return cave.basins
