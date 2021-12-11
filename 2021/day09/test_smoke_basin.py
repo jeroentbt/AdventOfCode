@@ -1,15 +1,13 @@
 from smoke_basin import low_points
 
 
-def test_find_one_lowest_point():
-    heightmap = \
-        "91\n" \
-        "99"
-    assert 1 == len(low_points(heightmap))
+def test_find_two_lowest_points_on_horizontal():
+    heightmap = "9190"
+    assert 2 == len(low_points(heightmap))
 
 
-def test_find_two_lowest_point():
+def test_find_two_lowest_points_on_grid():
     heightmap = \
-        "91\n" \
-        "19"
+        "9990\n" \
+        "0998"
     assert 2 == len(low_points(heightmap))
