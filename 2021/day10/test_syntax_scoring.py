@@ -1,4 +1,4 @@
-from syntax_scoring import is_corrupted, part1, incomplete
+from syntax_scoring import is_corrupted, part1, missing
 
 
 def test_simple_chunk_is_legal():
@@ -52,4 +52,4 @@ def test_part1_solution():
 
 
 def test_return_only_incomplete_lines():
-    assert 5 == len(incomplete(example_input))
+    assert 5 == len(missing(example_input))

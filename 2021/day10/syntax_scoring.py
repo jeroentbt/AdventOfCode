@@ -16,14 +16,14 @@ def is_corrupted(line):
     return opened_chunks
 
 
-def incomplete(input):
+def missing(input):
     lines = input.splitlines()
-    incomplete = []
+    missing = []
     for line in lines:
-        print(is_corrupted(line))
-        if is_corrupted(line) not in [')', ']', '}', '>']:
-            incomplete.append(line)
-    return incomplete
+        missing = is_corrupted(line)
+        if missing not in [')', ']', '}', '>']:
+            missing.append(missing)
+    return missing
 
 
 def part1(input):
