@@ -13,7 +13,17 @@ def is_corrupted(line):
                 return c
             if should_close == '<' and c != '>':
                 return c
-    return False
+    return opened_chunks
+
+
+def incomplete(input):
+    lines = input.splitlines()
+    incomplete = []
+    for line in lines:
+        print(is_corrupted(line))
+        if is_corrupted(line) not in [')', ']', '}', '>']:
+            incomplete.append(line)
+    return incomplete
 
 
 def part1(input):

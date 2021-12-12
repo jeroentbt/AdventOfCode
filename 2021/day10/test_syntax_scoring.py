@@ -1,8 +1,8 @@
-from syntax_scoring import is_corrupted, part1
+from syntax_scoring import is_corrupted, part1, incomplete
 
 
 def test_simple_chunk_is_legal():
-    assert False is is_corrupted('()')
+    assert [] == is_corrupted('()')
 
 
 def test_simple_chunk_is_corrupted():
@@ -10,15 +10,15 @@ def test_simple_chunk_is_corrupted():
 
 
 def test_nested_chunk_is_legal():
-    assert False is is_corrupted('([])')
+    assert [] == is_corrupted('([])')
 
 
 def test_loose_legal_examples():
-    assert False is is_corrupted('([])')
-    assert False is is_corrupted('{()()()}')
-    assert False is is_corrupted('<([{}])>')
-    assert False is is_corrupted('[<>({}){}[([])<>]]')
-    assert False is is_corrupted('(((((((((()))))))))).')
+    assert [] == is_corrupted('([])')
+    assert [] == is_corrupted('{()()()}')
+    assert [] == is_corrupted('<([{}])>')
+    assert [] == is_corrupted('[<>({}){}[([])<>]]')
+    assert [] == is_corrupted('(((((((((()))))))))).')
 
 
 def test_loose_corrupted_examples():
@@ -49,3 +49,7 @@ def test_part1_solution():
     with open("input.txt") as input:
         input = input.read()
     assert 392097 == part1(input)
+
+
+def test_return_only_incomplete_lines():
+    assert 5 == len(incomplete(example_input))
