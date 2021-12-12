@@ -1,4 +1,4 @@
-from syntax_scoring import is_corrupted, part1, missing
+from syntax_scoring import is_corrupted, part1, missing, score_completion
 
 
 def test_simple_chunk_is_legal():
@@ -53,3 +53,11 @@ def test_part1_solution():
 
 def test_return_only_incomplete_lines():
     assert 5 == len(missing(example_input))
+
+
+def test_score_completion():
+    assert 288957 == score_completion(['[', '(', '{', '(', '[', '[', '{', '{'])
+    assert 5566 == score_completion(['(', '{', '[', '<', '{', '('])
+    assert 1480781 == score_completion(['(', '(', '(', '(', '<', '{', '<', '{', '{'])
+    assert 995444 == score_completion(['<', '{', '[', '{', '[', '{', '{', '[', '['])
+    assert 294 == score_completion(['<', '{', '(', '['])

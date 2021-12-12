@@ -18,12 +18,13 @@ def is_corrupted(line):
 
 def missing(input):
     lines = input.splitlines()
-    missing = []
+    missing_list = []
     for line in lines:
         missing = is_corrupted(line)
         if missing not in [')', ']', '}', '>']:
-            missing.append(missing)
-    return missing
+            missing_list.append(missing)
+            # print(missing)
+    return missing_list
 
 
 def part1(input):
@@ -31,7 +32,7 @@ def part1(input):
     illegals = []
     for line in lines:
         illegals.append(is_corrupted(line))
-    print(illegals)
+    # print(illegals)
     syntax_error_score = 0
     for illegal in illegals:
         if illegal == ")":
@@ -43,3 +44,21 @@ def part1(input):
         if illegal == ">":
             syntax_error_score += 25137
     return syntax_error_score
+
+
+def score_completion(missing):
+    score = 0
+    points = {'(': 1,
+              '[': 2,
+              '{': 3,
+              '<': 4}
+    for c in reversed(missing):
+        score = (score * 5) + points[c]
+    return score
+
+
+def part2(input):
+    lines = input.splitlines()
+    missing_from_lines = missing(lines)
+    for needed in missing_from_lines:
+        pass
