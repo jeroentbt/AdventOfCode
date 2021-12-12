@@ -58,7 +58,12 @@ def score_completion(missing):
 
 
 def part2(input):
-    lines = input.splitlines()
-    missing_from_lines = missing(lines)
+    missing_from_lines = missing(input)
+    scores = []
     for needed in missing_from_lines:
-        pass
+        scores.append(score_completion(needed))
+    scores = sorted(scores)
+
+    middle = int(float(len(scores))/2 - .5)
+
+    return scores[middle]

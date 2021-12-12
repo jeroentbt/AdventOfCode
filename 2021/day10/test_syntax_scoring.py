@@ -1,4 +1,5 @@
-from syntax_scoring import is_corrupted, part1, missing, score_completion
+from syntax_scoring import is_corrupted, part1, missing, score_completion, \
+    part2
 
 
 def test_simple_chunk_is_legal():
@@ -61,3 +62,13 @@ def test_score_completion():
     assert 1480781 == score_completion(['(', '(', '(', '(', '<', '{', '<', '{', '{'])
     assert 995444 == score_completion(['<', '{', '[', '{', '[', '{', '{', '[', '['])
     assert 294 == score_completion(['<', '{', '(', '['])
+
+
+def test_example_part2():
+    assert 288957 == part2(example_input)
+
+
+def test_part2_solution():
+    with open("input.txt") as input:
+        input = input.read()
+    assert 4263222782 == part2(input)
