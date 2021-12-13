@@ -43,3 +43,8 @@ def test_printed_grid_is_same_as_example():
         "#.#........"
     paper = Paper(example_input)
     assert printed_grid == paper.print()
+
+
+def test_reading_folds():
+    paper = Paper(example_input)
+    assert [('y', 7), ('x', 5)] == paper.folds

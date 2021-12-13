@@ -8,7 +8,7 @@ class Paper():
         lines = input.splitlines()
         grid_fold_boundary = lines.index('')
         self.add_points_to_grid(lines[:grid_fold_boundary])
-        foldlines = lines[grid_fold_boundary+1:]
+        self.add_folds(lines[grid_fold_boundary+1:])
 
     def add_points_to_grid(self, lines):
         points = [(int(p[0]), int(p[1])) for p in
@@ -24,6 +24,10 @@ class Paper():
 
         for x, y in points:
             self.grid[y][x] = 1
+
+    def add_folds(self, lines):
+        self.folds = [(p[0][11:], int(p[1])) for p in
+                      [l.split('=') for l in lines]]
 
     def print(self):
         print_grid = ""
