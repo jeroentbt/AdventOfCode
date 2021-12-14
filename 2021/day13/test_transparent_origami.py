@@ -48,3 +48,29 @@ def test_printed_grid_is_same_as_example():
 def test_reading_folds():
     paper = Paper(example_input)
     assert [('y', 7), ('x', 5)] == paper.folds
+
+
+def test_fold_on_first():
+    input = \
+        "0,0\n" \
+        "1,2\n" \
+        "\n" \
+        "fold along y=1"
+    expected = "##"
+    paper = Paper(input)
+    paper.fold()
+    assert expected == paper.print()
+
+
+def test_first_fold_example():
+    printed_grid = \
+        "#.##..#..#.\n" \
+        "#...#......\n" \
+        "......#...#\n" \
+        "#...#......\n" \
+        ".#.#..#.###\n" \
+        "...........\n" \
+        "..........."
+    paper = Paper(example_input)
+    paper.fold()
+    assert printed_grid == paper.print()
