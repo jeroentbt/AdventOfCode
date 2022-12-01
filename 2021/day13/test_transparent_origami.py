@@ -74,3 +74,42 @@ def test_first_fold_example():
     paper = Paper(example_input)
     paper.fold()
     assert printed_grid == paper.print()
+
+
+def test_second_fold_example():
+    printed_grid = \
+        "#####\n" \
+        "#...#\n" \
+        "#...#\n" \
+        "#...#\n" \
+        "#####\n" \
+        ".....\n" \
+        "....."
+    paper = Paper(example_input)
+    paper.fold()
+    paper.fold()
+    assert printed_grid == paper.print()
+
+
+def test_first_fold_example_dots():
+    paper = Paper(example_input)
+    paper.fold()
+    assert 17 == paper.count_dots()
+
+
+def test_part1_solution():
+    with open("input.txt") as input:
+        input = input.read()
+    paper = Paper(input)
+    paper.fold()
+    assert 827 == paper.count_dots()
+
+
+def test_part2_solution():
+    with open("input.txt") as input:
+        input = input.read()
+    paper = Paper(input)
+    for x in paper.folds:
+        paper.fold()
+    print(paper.print())
+    assert 827 == paper.count_dots()

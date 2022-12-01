@@ -15,6 +15,8 @@ class Paper():
                   [line.split(',') for line in lines]]
         self.max_x = max([x for x, _ in points])
         self.max_y = max([y for _, y in points])
+        print("max x:", self.max_x)
+        print("max y:", self.max_y)
 
         for y in range(self.max_y+1):
             xes = []
@@ -32,23 +34,51 @@ class Paper():
     def fold_on(self, fold):
         direction, fold_index = fold
         if direction == 'y':
-            overhang = ((fold_index * 2) + 1) - len(self.grid)
-            top = self.grid[:fold_index]
-            bottom = self.grid[fold_index+1:]
 
-            bottom.reverse()
+            # positive overhang means bottom stuff will need to come up unmerged
+            overhang = len(self.grid) - (fold_index * 2) + 1
+            if overhang > 0:
+                print("positive y overhang")
+                overhang_bottom = self.grid[len(self.grid) - overhang:]
+            if overhang < 0:
+                print("negative y overhang")
+                overhang_top = self.grid[:overhang]
+
+
+            top = self.grid[:fold_index]
+            bottom = list(reversed(self.grid[fold_index+1:]))
 
             folded = []
             for y, line in enumerate(top):
-                print("y", y)
                 xes = []
                 for x, top_value in enumerate(line):
-                    print('x', x)
                     new = 1 if top_value + bottom[y][x] > 0 else 0
                     xes.append(new)
                 folded.append(xes)
 
-            self.grid = folded
+
+
+        if direction == 'x':
+
+            overhang = len(self.grid[0]) - (fold_index * 2) + 1
+            if overhang > 0:
+                print("positive x overhang")
+            if overhang < 0:
+                print("negative x overhang")
+
+            left = [line[:fold_index] for line in self.grid]
+            right = [list(reversed(line[fold_index+1:])) for line in self.grid]
+
+
+            folded = []
+            for y, line in enumerate(left):
+                xes = []
+                for x, left_value in enumerate(line):
+                    new = 1 if left_value + right[y][x] > 0 else 0
+                    xes.append(new)
+                folded.append(xes)
+
+        self.grid = folded
 
     def fold(self):
         this_fold = self.folds.pop(0)
@@ -61,3 +91,14 @@ class Paper():
                 print_grid += '#' if self.grid[y][x] else '.'
             print_grid += '\n'
         return print_grid.rstrip()
+
+    def count_dots(self):
+        count = 0
+        for line in self.grid:
+            for value in line:
+                if value:
+                    count += 1
+        return count
+
+    def funcname(arg):
+        pass
