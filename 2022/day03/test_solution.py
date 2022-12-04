@@ -35,3 +35,8 @@ example_scores = [
 @pytest.mark.parametrize("item,score", example_scores)
 def test_score_items(item, score):
     assert score == score_item(item)
+
+
+def test_split_list_by_three():
+    input = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    assert [[1, 2, 3],  [4, 5, 6], [7, 8, 9]] == group_by_three(input)
