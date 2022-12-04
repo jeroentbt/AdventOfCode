@@ -21,7 +21,25 @@ def complete_overlap(sectionstring):
     return False
 
 
+def any_overlap(sectionstring):
+    s1, s2 = parse_section(sectionstring)
+    s1begin, s1end = s1
+    s2begin, s2end = s2
+
+    s1_set = set([*range(s1begin, s1end + 1)])
+    s2_set = set([*range(s2begin, s2end + 1)])
+
+    if s1_set.intersection(s2_set):
+        return True
+
+    return False
+
+
+
 if __name__ == "__main__":
     with open("input.txt") as pairlist:
-        pairs_that_completely_overlap = [complete_overlap(l) for l in pairlist.readlines()]
+        lines = pairlist.readlines()
+        pairs_that_completely_overlap = [complete_overlap(l) for l in lines]
         print("part 1: " + str(pairs_that_completely_overlap.count(True)))
+        pairs_that_overlap = [any_overlap(l) for l in lines]
+        print("part 2: " + str(pairs_that_overlap.count(True)))
