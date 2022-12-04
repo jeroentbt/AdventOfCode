@@ -5,17 +5,20 @@ def compartmentalize(rucksack_contents):
     return compartments
 
 
-def item_in_both_compartments(compartments):
-    c1, c2 = compartments
-    s1 = set()
-    s2 = set()
+def item_in_all(groups):
+    groups = list(groups)
 
-    for char in c1:
-        s1.update(char)
-    for char in c2:
-        s2.update(char)
+    intersection = set()
+    for c in groups:
+        s = set()
+        for char in c:
+            s.update(char)
+        if not intersection:
+            intersection = s
+        else:
+            intersection = intersection.intersection(s)
 
-    return ''.join(s1.intersection(s2))
+    return ''.join(intersection)
 
 
 def score_item(item):
@@ -28,5 +31,5 @@ if __name__ == "__main__":
         rucksacks = sack_contents.readlines()
         total = 0
         for rucksack in rucksacks:
-            total += score_item(item_in_both_compartments(compartmentalize(rucksack)))
+            total += score_item(item_in_all(compartmentalize(rucksack)))
         print("part 1: " + str(total))

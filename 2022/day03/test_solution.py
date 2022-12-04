@@ -18,8 +18,8 @@ examples = [
 
 
 @pytest.mark.parametrize("compartments,item", examples)
-def test_item_in_both_compartments(compartments, item):
-    assert item == item_in_both_compartments(compartments)
+def test_item_all(compartments, item):
+    assert item == item_in_all(compartments)
 
 
 example_scores = [
