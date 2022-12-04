@@ -9,7 +9,7 @@ def parse_section(sectionstring):
     return tuple(parsed)
 
 
-def contains(sectionstring):
+def complete_overlap(sectionstring):
     s1, s2 = parse_section(sectionstring)
     s1begin, s1end = s1
     s2begin, s2end = s2
@@ -23,5 +23,5 @@ def contains(sectionstring):
 
 if __name__ == "__main__":
     with open("input.txt") as pairlist:
-        pairs_that_contain = [contains(l) for l in pairlist.readlines()]
-        print("part 1: " + str(pairs_that_contain.count(True)))
+        pairs_that_completely_overlap = [complete_overlap(l) for l in pairlist.readlines()]
+        print("part 1: " + str(pairs_that_completely_overlap.count(True)))

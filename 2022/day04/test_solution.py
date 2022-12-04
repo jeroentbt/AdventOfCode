@@ -8,12 +8,12 @@ def test_parse_section():
 
 def test_one_does_not_contain_two():
     sections = "2-4,6-8"
-    assert False == contains(sections)
+    assert False == complete_overlap(sections)
 
 
 def test_one_does_contain_two():
     sections = "2-8,3-7"
-    assert True == contains(sections)
+    assert True == complete_overlap(sections)
 
 
 part1 = [
@@ -28,4 +28,4 @@ part1 = [
 
 @pytest.mark.parametrize("string,result", part1)
 def test_example_part1(string, result):
-    assert result == contains(string)
+    assert result == complete_overlap(string)
