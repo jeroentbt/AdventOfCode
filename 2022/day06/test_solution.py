@@ -22,3 +22,15 @@ example = [("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 7),
 @pytest.mark.parametrize("data,solution", example)
 def test_find_end_of_marker(data, solution):
     assert solution == find_marker(data)
+
+
+example = [("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 19),
+           ("bvwbjplbgvbhsrlpgdmjqwftvncz", 23),
+           ("nppdvjthqldpwncqszvftbrmjlhg", 23),
+           ("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 29),
+           ("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 26)]
+
+
+@pytest.mark.parametrize("data,solution", example)
+def test_find_end_of_marker(data, solution):
+    assert solution == find_marker(data, 14)
