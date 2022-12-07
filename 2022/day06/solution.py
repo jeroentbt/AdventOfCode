@@ -3,7 +3,7 @@ def is_marker(chars):
 
 
 def find_marker(datastream, length=4):
-    for i in range(length,len(datastream)):
+    for i in range(length, len(datastream)):
         if is_marker(datastream[i-length:i]):
             return i
 
