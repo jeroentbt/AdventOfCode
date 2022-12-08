@@ -67,3 +67,13 @@ def test_verify_example_tree():
 def test_part1():
     fs = read_output(test_input)
     assert 95437 == part_one_count(fs)
+
+
+def test_part2_needed_space():
+    fs = read_output(test_input)
+    assert 8381165 == remove_at_least(fs)
+
+
+def test_part2():
+    fs = read_output(test_input)
+    assert 24933642 == part_two(fs)
