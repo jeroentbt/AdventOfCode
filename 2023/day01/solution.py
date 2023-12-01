@@ -2,42 +2,33 @@ import regex as re
 from icecream import ic
 
 
-def first_n_last_n(input_string, words=False):
+def first_n_last_n(input_string, words=True):
     word_to_digit = {
-        'one': '1',
-        'two': '2',
-        'three': '3',
-        'four': '4',
-        'five': '5',
-        'six': '6',
-        'seven': '7',
-        'eight': '8',
-        'nine': '9'
+        'one': 1,
+        'two': 2,
+        'three': 3,
+        'four': 4,
+        'five': 5,
+        'six': 6,
+        'seven': 7,
+        'eight': 8,
+        'nine': 9
     }
-    first = ""
-    last = ""
 
-    if words:
-        pattern = r'(\d|' + '|'.join(word_to_digit.keys()) + r')'
+    pattern = r'(\d|' + '|'.join(word_to_digit.keys()) + r')'
 
-        extremities = [None] * len(input_string)
+    digits = [None] * len(input_string)
 
-        for m in re.finditer(pattern, input_string, overlapped=True):
-            index = int(m.start())
-            extremities[index] = m.group()
+    for m in re.finditer(pattern, input_string, overlapped=True):
+        index = int(m.start())
+        digits[index] = m.group()
 
-        extremities = [x for x in extremities if x]
-        f = extremities[0]
-        first = f if f.isdigit() else word_to_digit.get(f)
-        l = extremities[-1]
-        last = l if l.isdigit() else word_to_digit.get(l)
 
-    else:
-        for char in input_string:
-            if char.isdigit():
-                last = char
-                if first == "":
-                    first = char
+    digits = [x for x in digits if x]
+    f = digits[0]
+    first = int(f) if f not in word_to_digit.keys() else word_to_digit.get(f)
+    l = digits[-1]
+    last = int(l) if l not in word_to_digit.keys() else word_to_digit.get(l)
 
     return first, last
 
@@ -46,5 +37,6 @@ def sum_of_values(input_file, words=False):
     output_sum = 0
     with open(input_file) as the_input:
         for line in the_input.readlines():
-            output_sum += int("".join(first_n_last_n(line, words)))
+            a, b = first_n_last_n(line, words)
+            output_sum += ((10 * a) + b)
     return output_sum
