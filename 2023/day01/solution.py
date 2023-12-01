@@ -18,7 +18,6 @@ def first_n_last_n(input_string, words=False):
     last = ""
 
     if words:
-        ic()
         pattern = r'(\d|' + '|'.join(word_to_digit.keys()) + \
                   r'|' + '|'.join(word_to_digit.values()) + r')'
 
@@ -33,9 +32,6 @@ def first_n_last_n(input_string, words=False):
         first = f if f.isdigit() else word_to_digit.get(f)
         l = extremities[-1]
         last = l if l.isdigit() else word_to_digit.get(l)
-        ic(f,l)
-        ic(first, last)
-
 
     else:
         for char in input_string:
@@ -43,8 +39,6 @@ def first_n_last_n(input_string, words=False):
                 last = char
                 if first == "":
                     first = char
-    ic(first, last)
-
 
     return first, last
 
