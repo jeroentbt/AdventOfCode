@@ -20,4 +20,8 @@ def test_solution_1():
 
 def test_digits_can_be_written_out():
     example = "two1nine"
-    assert first_and_last_digit_of(example) == ("2", "9")
+    assert first_and_last_digit_of(example, True) == ("2", "9")
+
+def test_words_can_overlap():
+    example = "twone"
+    assert first_and_last_digit_of(example, True) == ("2", "1")
