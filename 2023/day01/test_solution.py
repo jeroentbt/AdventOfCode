@@ -11,9 +11,9 @@ def test_get_first_and_last_digit(data, first, last):
     data_in = data
     assert first_and_last_digit_of(data_in) == (first, last)
 
-def test_sum_of_example_values():
+def test_sum_of_example_values_1():
     input_file = "input_example.txt"
     assert sum_of_values(input_file) == 142
 
-def test_solution():
+def test_solution_1():
     assert sum_of_values("input.txt") == 53386
