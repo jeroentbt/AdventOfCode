@@ -1,10 +1,9 @@
-import re
+import regex as re
 from icecream import ic
 
 
-def first_and_last_digit_of(input_string, also_recognise_words=False):
+def first_n_last_n(input_string, words=False):
     word_to_digit = {
-        'zero': '0',
         'one': '1',
         'two': '2',
         'three': '3',
@@ -15,20 +14,44 @@ def first_and_last_digit_of(input_string, also_recognise_words=False):
         'eight': '8',
         'nine': '9'
     }
-    if also_recognise_words:
-        pattern = r'\d|' + '|'.join(word_to_digit.keys())
+    first = ""
+    last = ""
+
+    if words:
+        ic()
+        pattern = r'(\d|' + '|'.join(word_to_digit.keys()) + \
+                  r'|' + '|'.join(word_to_digit.values()) + r')'
+
+        extremities = [None] * len(input_string)
+
+        for m in re.finditer(pattern, input_string, overlapped=True):
+            index = int(m.start())
+            extremities[index] = m.group()
+
+        extremities = [x for x in extremities if x]
+        f = extremities[0]
+        first = f if f.isdigit() else word_to_digit.get(f)
+        l = extremities[-1]
+        last = l if l.isdigit() else word_to_digit.get(l)
+        ic(f,l)
+        ic(first, last)
+
+
     else:
-        pattern = r'\d'
-    digits = re.findall(pattern, input_string)
-    # ic(digits)
-    first = word_to_digit.get(digits[0], digits[0])
-    last = word_to_digit.get(digits[-1], digits[-1])
+        for char in input_string:
+            if char.isdigit():
+                last = char
+                if first == "":
+                    first = char
+    ic(first, last)
+
+
     return first, last
 
 
-def sum_of_values(input_file):
+def sum_of_values(input_file, words=False):
     output_sum = 0
     with open(input_file) as the_input:
         for line in the_input.readlines():
-            output_sum += int("".join(first_and_last_digit_of(line)))
+            output_sum += int("".join(first_n_last_n(line, words)))
     return output_sum
