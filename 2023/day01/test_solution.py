@@ -15,4 +15,5 @@ def test_sum_of_example_values():
     input_file = "input_example.txt"
     assert sum_of_values(input_file) == 142
 
-
+def test_solution():
+    assert sum_of_values("input.txt") == 53386
