@@ -4,36 +4,37 @@ from icecream import ic
 
 def first_n_last_n(input_string, words=True):
     word_to_digit = {
-        'one': 1,
-        'two': 2,
-        'three': 3,
-        'four': 4,
-        'five': 5,
-        'six': 6,
-        'seven': 7,
-        'eight': 8,
-        'nine': 9
+        'one': "1",
+        'two': "2",
+        'three': "3",
+        'four': "4",
+        'five': "5",
+        'six': "6",
+        'seven': "7",
+        'eight': "8",
+        'nine': "9"
     }
 
     pattern = r'(\d|' + '|'.join(word_to_digit.keys()) + r')'
-
     digits = [None] * len(input_string)
 
     for m in re.finditer(pattern, input_string, overlapped=True):
-        index = int(m.start())
-        digits[index] = m.group()
-
+        i = int(m.start())
+        match = m.group()
+        if match.isdigit():
+            digits[i] = match
+        if words and match in word_to_digit.keys():
+            digits[i] = word_to_digit.get(match)
 
     digits = [x for x in digits if x]
-    f = digits[0]
-    first = int(f) if f not in word_to_digit.keys() else word_to_digit.get(f)
-    l = digits[-1]
-    last = int(l) if l not in word_to_digit.keys() else word_to_digit.get(l)
+
+    first = int(digits[0])
+    last = int(digits[-1])
 
     return first, last
 
 
-def sum_of_values(input_file, words=False):
+def sum_of_values(input_file, words=True):
     output_sum = 0
     with open(input_file) as the_input:
         for line in the_input.readlines():

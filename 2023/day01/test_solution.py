@@ -25,5 +25,8 @@ def test_words_can_overlap():
     example = "twone"
     assert first_n_last_n(example) == (2, 1)
 
+def test_sum_of_example_values_2():
+    assert sum_of_values("input_example_2.txt") == 281
+
 def test_solution_2():
     assert sum_of_values("input.txt") == 53312
