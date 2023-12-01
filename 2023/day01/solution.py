@@ -18,8 +18,7 @@ def first_n_last_n(input_string, words=False):
     last = ""
 
     if words:
-        pattern = r'(\d|' + '|'.join(word_to_digit.keys()) + \
-                  r'|' + '|'.join(word_to_digit.values()) + r')'
+        pattern = r'(\d|' + '|'.join(word_to_digit.keys()) + r')'
 
         extremities = [None] * len(input_string)
 
