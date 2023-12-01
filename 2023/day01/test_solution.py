@@ -17,3 +17,7 @@ def test_sum_of_example_values_1():
 
 def test_solution_1():
     assert sum_of_values("input.txt") == 53386
+
+def test_digits_can_be_written_out():
+    example = "two1nine"
+    assert first_and_last_digit_of(example) == ("2", "9")

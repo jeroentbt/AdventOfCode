@@ -1,9 +1,26 @@
 import re
+from icecream import ic
 
 
 def first_and_last_digit_of(input_string):
-    digits = re.findall(r'\d', input_string)
-    return digits[0], digits[-1]
+    word_to_digit = {
+        'zero': '0',
+        'one': '1',
+        'two': '2',
+        'three': '3',
+        'four': '4',
+        'five': '5',
+        'six': '6',
+        'seven': '7',
+        'eight': '8',
+        'nine': '9'
+    }
+    pattern = r'\d|' + '|'.join(word_to_digit.keys())
+    digits = re.findall(pattern, input_string)
+    ic(digits)
+    first = word_to_digit.get(digits[0], digits[0])
+    last = word_to_digit.get(digits[-1], digits[-1])
+    return first, last
 
 
 def sum_of_values(input_file):
