@@ -49,10 +49,21 @@ def game_is_valid(game: Dict[str, Union[int, List[Rgb]]],
             return False
     return True
 
+def minimal_set_for_game(sets: List[Rgb]) -> Rgb:
+    max_R = max([set.R for set in sets])
+    max_G = max([set.G for set in sets])
+    max_B = max([set.B for set in sets])
+    return Rgb(R=max_R, G=max_G, B=max_B)
+
 def sum_of_valid_games(report: List[str]) -> int:
     games = [parse_game(s) for s in report]
     valid_games = [g['n'] for g in filter(game_is_valid, games)]
     return sum(valid_games)
 
+def sum_of_powers_minimal_sets(report: List[str]) -> int:
+    games = [parse_game(line)['sets'] for line in report]
+    minimals = map(minimal_set_for_game, games)
+    powers = [ m.R * m.G * m.B for m in minimals ]
+    return sum(powers)
 
 
