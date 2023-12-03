@@ -49,3 +49,10 @@ def game_is_valid(game: Dict[str, Union[int, List[Rgb]]],
             return False
     return True
 
+def sum_of_valid_games(report: List[str]) -> int:
+    games = [parse_game(s) for s in report]
+    valid_games = [g['n'] for g in filter(game_is_valid, games)]
+    return sum(valid_games)
+
+
+
