@@ -1,12 +1,12 @@
 from collections import namedtuple
-from typing import Dict, List
+from typing import Dict, List, Optional, Union
 import regex as re
 from icecream import ic
 
 Rgb = namedtuple('Rgb', ['R', 'G', 'B'])
 
 
-def parse_game(game: str) -> Dict[int, List[Rgb]]:
+def parse_game(game: str) -> Dict[str, Union[int, List[Rgb]]]:
     pattern = r'^Game (?P<game_nr>\d+):(?P<sets>.*)'
     match = re.search(pattern, game)
 
@@ -17,12 +17,11 @@ def parse_game(game: str) -> Dict[int, List[Rgb]]:
     else:
         return {}
 
-    parsed_game = {game_nr: sets}
+    parsed_game = {'n': game_nr, 'sets': sets}
     return parsed_game
 
 
 def read_set(setstring: str) -> Rgb:
-    ic(setstring)
     red = 0
     green = 0
     blue = 0
@@ -38,3 +37,14 @@ def read_set(setstring: str) -> Rgb:
 
     parsed_set = Rgb(R=red, G=green, B=blue)
     return parsed_set
+
+
+def game_is_valid(game: Dict[str, Union[int, List[Rgb]]],
+                  red: Optional[int] = 12,
+                  green: Optional[int] = 13,
+                  blue: Optional[int] = 14):
+
+    if game.get('n') == 3:
+        return False
+    else:
+        return True
