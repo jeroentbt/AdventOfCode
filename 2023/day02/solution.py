@@ -44,7 +44,8 @@ def game_is_valid(game: Dict[str, Union[int, List[Rgb]]],
                   green: Optional[int] = 13,
                   blue: Optional[int] = 14):
 
-    if game.get('n') == 3:
-        return False
-    else:
-        return True
+    for s in game['sets']:
+        if s.R > red or s.G > green or s.B > blue:
+            return False
+    return True
+

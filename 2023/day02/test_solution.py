@@ -16,6 +16,9 @@ games_parsed = [
      True),
     ("Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red",
      {'n': 3, 'sets': [Rgb(R=20, G=8, B=6), Rgb(R=4, G=13, B=5), Rgb(R=1, G=5, B=0)]},
+     False),
+    ("Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red",
+     {'n': 4, 'sets': [Rgb(R=3, G=1, B=6), Rgb(R=6, G=3, B=0), Rgb(R=14, G=3, B=15)]},
      False)
 ]
 
